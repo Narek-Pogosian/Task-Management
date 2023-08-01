@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 export interface Tag {
   id: string;
   value: string;
+  color: string;
   label: string;
 }
 

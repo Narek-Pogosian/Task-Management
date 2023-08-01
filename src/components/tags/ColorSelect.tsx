@@ -10,12 +10,16 @@ import { tagColors } from "@/lib/data/tagColors";
 
 type Props = {
   setColor: (value: string) => void;
+  color: string | undefined;
 };
 
-const ColorSelect = ({ setColor }: Props) => {
+const ColorSelect = ({ setColor, color }: Props) => {
   return (
     <Select onValueChange={setColor}>
-      <SelectTrigger className="w-full">
+      <SelectTrigger
+        className={!color ? "text-muted-foreground" : "font-bold"}
+        style={{ color: color }}
+      >
         <SelectValue placeholder="Pick a color" />
       </SelectTrigger>
       <SelectContent className="overflow-y-auto text-white max-h-60">

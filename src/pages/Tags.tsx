@@ -18,7 +18,7 @@ const Tags = () => {
             className="flex items-center justify-between py-2 border-b"
             key={tag.id}
           >
-            <TagChip color={tag.value} text={tag.label} />
+            <TagChip color={tag.color} text={tag.label} />
             <DeleteTagDialog id={tag.id} />
           </li>
         ))}

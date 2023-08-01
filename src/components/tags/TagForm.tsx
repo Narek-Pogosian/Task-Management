@@ -12,7 +12,7 @@ type Props = {
 
 const TagForm = ({ setIsOpen }: Props) => {
   const [title, setTitle] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState<string>();
   const [error, setError] = useState(false);
 
   const { addTag } = usePersistStore();
@@ -26,13 +26,19 @@ const TagForm = ({ setIsOpen }: Props) => {
       return;
     }
 
-    addTag({ id: crypto.randomUUID(), label: title, value: color });
+    addTag({
+      id: crypto.randomUUID(),
+      label: title,
+      value: color + title,
+      color: color,
+    });
     setIsOpen(false);
 
     toast({
       title: `New tag "${title}" created.`,
     });
   };
+
   return (
     <form className="grid gap-4" onSubmit={handleSubmit}>
       <Input
@@ -40,7 +46,7 @@ const TagForm = ({ setIsOpen }: Props) => {
         name="tagName"
         onChange={(e) => setTitle(e.target.value)}
       />
-      <ColorSelect setColor={setColor} />
+      <ColorSelect setColor={setColor} color={color} />
       {error && (
         <Alert variant="destructive">
           <AlertDescription>Please fill in all fields.</AlertDescription>

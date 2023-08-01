@@ -49,7 +49,7 @@ const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
               ? "#1e293b"
               : "#e2e8f0"
             : "transparent",
-          color: data.value,
+          color: data.color,
           fontWeight: 700,
           paddingBlock: "4px",
           borderRadius: "4px",
@@ -60,7 +60,7 @@ const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
         }),
         multiValue: (styles, { data }) => ({
           ...styles,
-          backgroundColor: data.value,
+          backgroundColor: data.color,
           color: "white",
           display: "flex",
           gap: "2px",
