@@ -4,8 +4,8 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
 const getAllTasks = async () => {
-  const { data, error } = await db.from("Tasks").select("*");
-
+  const { data, error } = await db.from("Tasks").select("*, projectId(*)");
+  console.log(data);
   if (error) throw error;
 
   return data;

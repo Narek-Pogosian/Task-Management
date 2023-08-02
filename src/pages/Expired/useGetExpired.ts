@@ -3,17 +3,16 @@ import { Task } from "@/lib/types/db.types";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
-const getTodayTasks = async () => {
+const getExpired = async () => {
   const { data, error } = await db
     .from("Tasks")
     .select("*, projectId(*)")
-    .eq("expires_at", new Date().toDateString());
-
+    .lt("expires_at", new Date().toDateString());
   if (error) throw error;
 
   return data;
 };
 
-export default function useGetToday() {
-  return useQuery<Task[], PostgrestError>(["tasks", "today"], getTodayTasks);
+export default function useGetExpired() {
+  return useQuery<Task[], PostgrestError>(["tasks", "expired"], getExpired);
 }

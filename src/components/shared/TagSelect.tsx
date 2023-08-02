@@ -4,16 +4,17 @@ import ReactSelect from "react-select";
 type Props = {
   selectedTags: Tag[];
   setSelectedTags: (tags: Tag[]) => void;
+  placeholder: string;
 };
 
-const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
+const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
   const { tags, isDarkMode } = usePersistStore();
-
+  console.log(tags);
   return (
     <ReactSelect
       isMulti
-      placeholder="Select tags"
-      maxMenuHeight={150}
+      placeholder={placeholder}
+      maxMenuHeight={160}
       styles={{
         control: (styles, { isFocused }) => ({
           ...styles,
@@ -49,7 +50,7 @@ const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
               ? "#1e293b"
               : "#e2e8f0"
             : "transparent",
-          color: data.color,
+          color: `rgb(${data.color})`,
           fontWeight: 700,
           paddingBlock: "4px",
           borderRadius: "4px",
@@ -60,8 +61,10 @@ const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
         }),
         multiValue: (styles, { data }) => ({
           ...styles,
-          backgroundColor: data.color,
-          color: "white",
+          backgroundColor: isDarkMode
+            ? `rgba(${data.color}, 0.2)`
+            : `rgba(${data.color}, 0.05)`,
+          color: `rgb(${data.color})`,
           display: "flex",
           gap: "2px",
           marginRight: "3px",
@@ -70,9 +73,9 @@ const TagSelect = ({ selectedTags, setSelectedTags }: Props) => {
           paddingBlock: "1px",
           borderRadius: "4px",
         }),
-        multiValueLabel: (styles) => ({
+        multiValueLabel: (styles, { data }) => ({
           ...styles,
-          color: "white",
+          color: `rgb(${data.color})`,
           fontSize: "12px",
           fontWeight: 600,
         }),

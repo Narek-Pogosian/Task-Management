@@ -20,6 +20,7 @@ export default function useDeleteProject(projectId: string) {
 
   return useMutation(deleteProject, {
     onSuccess: () => {
+      queryClient.invalidateQueries(["tasks"]);
       queryClient.invalidateQueries(["projects"]);
       toast({ title: "Project deleted" });
 

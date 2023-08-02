@@ -51,7 +51,7 @@ export interface Database {
           description: string | null;
           expires_at: string | null;
           id: string;
-          projectId: string | null;
+          projectId: Project | null;
           tags: Json | null;
           title: string;
           user_id: string;

@@ -9,6 +9,7 @@ import { db } from "@/lib/db";
 import { toast } from "../ui/use-toast";
 import LoadingButton from "../ui/loading-button";
 import DatePicker from "../ui/date-picker";
+import { useQueryClient } from "@tanstack/react-query";
 
 const TaskForm = () => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
@@ -16,11 +17,14 @@ const TaskForm = () => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Date>();
   const [project, setProject] = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!title) return;
     setIsSubmitting(true);
 
     const { data: auth, error: authError } = await db.auth.getSession();
@@ -39,6 +43,13 @@ const TaskForm = () => {
     });
 
     setIsSubmitting(false);
+
+    if (!error) {
+      queryClient.invalidateQueries(["tasks"]);
+      // queryClient.invalidateQueries({
+      //   predicate: (query) => query.queryKey[0] === "tasks",
+      // });
+    }
 
     if (error) {
       console.log(error);
@@ -68,6 +79,7 @@ const TaskForm = () => {
           <TagSelect
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
+            placeholder="Select tags"
           />
         </div>
         <CreateTagDialog full />

@@ -32,6 +32,7 @@ const TagForm = ({ setIsOpen }: Props) => {
       value: color + title,
       color: color,
     });
+
     setIsOpen(false);
 
     toast({

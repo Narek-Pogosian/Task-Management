@@ -15,6 +15,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ["Open Sans", "sans-serif"],
+    },
     extend: {
       screens: {
         xs: "540px",

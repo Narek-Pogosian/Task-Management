@@ -7,6 +7,8 @@ import Tags from "./pages/Tags";
 import CreateTask from "./pages/CreateTask/CreateTask";
 import AllTasks from "./pages/AllTasks/AllTasks";
 import Today from "./pages/Today/Today";
+import Expired from "./pages/Expired/Expired";
+import Upcoming from "./pages/Upcoming/Upcoming";
 
 const App = () => {
   return (
@@ -17,6 +19,9 @@ const App = () => {
         <Route index element={<Navigate to="today" replace />} />
         <Route path="today" element={<Today />} />
         <Route path="all" element={<AllTasks />} />
+        <Route path="upcoming" element={<Upcoming />} />
+        <Route path="expired" element={<Expired />} />
+
         <Route path="project/:projectId" element={<Project />} />
         <Route path="task/create" element={<CreateTask />} />
         <Route path="tags" element={<Tags />} />

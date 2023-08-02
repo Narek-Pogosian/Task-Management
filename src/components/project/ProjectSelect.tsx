@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ProjectSelect = ({ setProject }: Props) => {
-  const { data: projects } = useGetProjects();
+  const { data: projects, isError } = useGetProjects();
 
   return (
     <Select onValueChange={setProject}>
@@ -25,11 +25,19 @@ const ProjectSelect = ({ setProject }: Props) => {
       </SelectTrigger>
       <SelectContent className="overflow-y-auto max-h-60">
         <SelectGroup>
-          {projects?.map((project) => (
-            <SelectItem value={project.id} key={project.id}>
-              {project.name}
-            </SelectItem>
-          ))}
+          {isError ? (
+            <span className="pl-2 text-sm font-semibold text-red-500">
+              Error getting projects
+            </span>
+          ) : projects?.length == 0 ? (
+            <span className="pl-2 text-sm font-semibold">No Projects</span>
+          ) : (
+            projects?.map((project) => (
+              <SelectItem value={project.id} key={project.id}>
+                {project.name}
+              </SelectItem>
+            ))
+          )}
         </SelectGroup>
       </SelectContent>
     </Select>

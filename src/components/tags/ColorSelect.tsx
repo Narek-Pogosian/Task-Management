@@ -18,7 +18,7 @@ const ColorSelect = ({ setColor, color }: Props) => {
     <Select onValueChange={setColor}>
       <SelectTrigger
         className={!color ? "text-muted-foreground" : "font-bold"}
-        style={{ color: color }}
+        style={{ color: `rgb(${color})` }}
       >
         <SelectValue placeholder="Pick a color" />
       </SelectTrigger>
@@ -28,7 +28,7 @@ const ColorSelect = ({ setColor, color }: Props) => {
             <SelectItem
               value={color.value}
               key={color.id}
-              style={{ backgroundColor: color.value }}
+              style={{ backgroundColor: `rgb(${color.value})` }}
               className="font-bold cursor-pointer"
             >
               {color.label}

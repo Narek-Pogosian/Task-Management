@@ -1,14 +1,14 @@
 import { Task } from "@/lib/types/db.types";
 import TaskList from "./TaskList";
+import { convertTaskList } from "@/lib/utils";
 
 type Props = {
   tasks: Task[] | undefined;
   isLoading: boolean;
   isError: boolean;
-  isSuccess: boolean;
 };
 
-const TaskPage = ({ tasks, isError, isLoading, isSuccess }: Props) => {
+const TaskPage = ({ tasks, isError, isLoading }: Props) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -17,9 +17,7 @@ const TaskPage = ({ tasks, isError, isLoading, isSuccess }: Props) => {
     return <div>Error</div>;
   }
 
-  if (isSuccess) {
-    return <TaskList tasks={tasks} />;
-  }
+  if (tasks) return <TaskList tasks={convertTaskList(tasks)} />;
 };
 
 export default TaskPage;
