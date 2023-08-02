@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
-import ProjectForm from "./ProjectForm";
+import ProjectForm from "../forms/ProjectForm";
 import { FormEvent, useState } from "react";
 import useCreateProject from "@/hooks/useCreateProject";
 import LoadingButton from "../ui/loading-button";

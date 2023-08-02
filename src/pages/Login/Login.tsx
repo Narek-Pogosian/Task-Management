@@ -9,33 +9,38 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import AuthLayout from "@/components/layout/AuthLayout";
-import {
-  RegisterSchemaType,
-  registerSchema,
-} from "@/lib/validators/registerValidation";
+import AuthLayout from "@/layout/AuthLayout";
+import { LoginSchemaType, loginSchema } from "@/lib/validators/loginValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import useRegister from "@/hooks/useRegister";
+import useLogin from "./useLogin";
 
-const Register = () => {
-  const { isLoading, error, mutate: register } = useRegister();
+const Login = () => {
+  const { isLoading, error, mutate: signin } = useLogin();
   const navigate = useNavigate();
 
-  const form = useForm<RegisterSchemaType>({
-    resolver: zodResolver(registerSchema),
+  const form = useForm<LoginSchemaType>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
-  const onSubmit = async (values: RegisterSchemaType) => {
-    register(values, {
+  const onSubmit = async (values: LoginSchemaType) => {
+    signin(values, {
       onSuccess: () => navigate("/"),
     });
+  };
+
+  const demoSignin = () => {
+    signin(
+      { email: "demo@demo.com", password: "Wefo2ewo1erXtr" },
+      {
+        onSuccess: () => navigate("/"),
+      }
+    );
   };
 
   return (
@@ -43,7 +48,7 @@ const Register = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="grid w-[300px] sm:w-[400px] gap-3 px-4 py-6 border rounded"
+          className="grid w-[300px] sm:w-[400px] gap-3 px-4 py-6 border rounded mb-6"
         >
           <FormField
             control={form.control}
@@ -71,23 +76,6 @@ const Register = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Confirm Password"
-                    type="password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           {error && (
             <Alert variant="destructive">
               <AlertDescription>{error.message}</AlertDescription>
@@ -95,21 +83,29 @@ const Register = () => {
           )}
           <LoadingButton
             isLoading={isLoading}
-            loadingText="Register"
+            loadingText="Signing in..."
             type="submit"
           >
-            Register
+            Sign In
           </LoadingButton>
           <div className="text-sm font-semibold text-center">
-            Already have an account?{" "}
-            <Link to="/signin" className="text-indigo-500 hover:underline">
-              Sign in here
+            Don't have an account?{" "}
+            <Link to="/register" className="text-indigo-500 hover:underline">
+              Register here
             </Link>
           </div>
         </form>
       </Form>
+      <LoadingButton
+        isLoading={isLoading}
+        loadingText="Signing in..."
+        variant="outline"
+        onClick={demoSignin}
+      >
+        Demo Account
+      </LoadingButton>
     </AuthLayout>
   );
 };
 
-export default Register;
+export default Login;

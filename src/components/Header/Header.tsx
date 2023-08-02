@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Signout from "../shared/Signout";
-import ToggleTheme from "../shared/ToggleTheme";
-import Logo from "../shared/Logo";
+import Signout from "./Signout";
+import ToggleTheme from "./ToggleTheme";
+import Logo from "./Logo";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import MobileSidebar from "./Sidebar/MobileSidebar";
+import MobileSidebar from "./MobileSidebar";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 

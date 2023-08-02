@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import TagForm from "./TagForm";
+import TagForm from "../forms/TagForm";
 
 const CreateTagDialog = ({ full }: { full?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);

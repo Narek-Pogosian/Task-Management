@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
-import ProjectForm from "./ProjectForm";
+import ProjectForm from "../forms/ProjectForm";
 import { FormEvent, useState } from "react";
-import { Project } from "@/types/db.types";
+import { Project } from "@/lib/types/db.types";
 import useEditProject from "@/hooks/useEditProject";
 import LoadingButton from "../ui/loading-button";
 

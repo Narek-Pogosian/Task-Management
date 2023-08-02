@@ -1,14 +1,14 @@
 import { FormEvent, useState } from "react";
-import DatePicker from "../shared/DatePicker";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import ProjectSelect from "../project/ProjectSelect";
 import CreateTagDialog from "../tags/CreateTagDialog";
-import TagSelect from "../tags/TagSelect";
+import TagSelect from "../shared/TagSelect";
 import { Tag } from "@/lib/store/persistStore";
 import { db } from "@/lib/db";
 import { toast } from "../ui/use-toast";
 import LoadingButton from "../ui/loading-button";
+import DatePicker from "../ui/date-picker";
 
 const TaskForm = () => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);

@@ -1,3 +1,5 @@
+import { Tag } from "@/lib/store/persistStore";
+
 export type Json =
   | string
   | number
@@ -8,6 +10,9 @@ export type Json =
 
 export type Project = Database["public"]["Tables"]["Projects"]["Row"];
 export type Task = Database["public"]["Tables"]["Tasks"]["Row"];
+export interface ConvertedTask extends Omit<Task, "tags"> {
+  tags: Tag[];
+}
 
 export interface Database {
   public: {

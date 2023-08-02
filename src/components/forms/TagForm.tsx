@@ -2,7 +2,7 @@ import { usePersistStore } from "@/lib/store/persistStore";
 import { FormEvent, useState } from "react";
 import { toast } from "../ui/use-toast";
 import { Input } from "../ui/input";
-import ColorSelect from "./ColorSelect";
+import ColorSelect from "../tags/ColorSelect";
 import { Alert, AlertDescription } from "../ui/alert";
 import { Button } from "../ui/button";
 

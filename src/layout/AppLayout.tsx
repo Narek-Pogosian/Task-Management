@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { db } from "@/lib/db";
 import { Outlet, useNavigate } from "react-router-dom";
-import Sidebar from "@/components/layout/Sidebar/Sidebar";
-import Header from "@/components/layout/Header";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import Header from "@/components/Header/Header";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 const AppLayout = () => {

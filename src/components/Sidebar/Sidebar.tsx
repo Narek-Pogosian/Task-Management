@@ -1,5 +1,5 @@
 import { FolderOpen } from "lucide-react";
-import CreateProjectDialog from "../../project/CreateProjectDialog";
+import CreateProjectDialog from "../project/CreateProjectDialog";
 import PageLinks from "./PageLinks";
 import ProjectList from "./ProjectList";
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Project } from "@/types/db.types";
+import { Project } from "@/lib/types/db.types";
 import ProjectMenu from "@/components/project/ProjectMenu";
 
 type Props = {

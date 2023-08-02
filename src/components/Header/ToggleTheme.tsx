@@ -15,12 +15,8 @@ const ToggleTheme = () => {
   }, [isDarkMode]);
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={toggleTheme}
-      aria-label="toggle theme"
-    >
+    <Button variant="outline" size="icon" onClick={toggleTheme}>
+      <span className="sr-only">toggle theme</span>
       {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </Button>
   );

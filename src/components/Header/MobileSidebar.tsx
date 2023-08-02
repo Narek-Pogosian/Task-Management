@@ -1,8 +1,8 @@
 import { AlignJustify } from "lucide-react";
-import { Button } from "../../ui/button";
+import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Sidebar from "./Sidebar";
-import Signout from "../../shared/Signout";
+import Sidebar from "../Sidebar/Sidebar";
+import Signout from "./Signout";
 
 const MobileSidebar = () => {
   return (
