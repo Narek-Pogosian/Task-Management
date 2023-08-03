@@ -3,7 +3,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import ProjectSelect from "../project/ProjectSelect";
 import CreateTagDialog from "../tags/CreateTagDialog";
-import TagSelect from "../shared/TagSelect";
+import TagSelect from "../tags/TagSelect";
 import { Tag } from "@/lib/store/persistStore";
 import { db } from "@/lib/db";
 import { toast } from "../ui/use-toast";
@@ -45,14 +45,15 @@ const TaskForm = () => {
     setIsSubmitting(false);
 
     if (!error) {
-      queryClient.invalidateQueries(["tasks"]);
+      queryClient.invalidateQueries(["tasks"], {
+        refetchType: "active",
+      });
       // queryClient.invalidateQueries({
       //   predicate: (query) => query.queryKey[0] === "tasks",
       // });
     }
 
     if (error) {
-      console.log(error);
       toast({
         variant: "destructive",
         title: "Something went wrong",

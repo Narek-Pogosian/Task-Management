@@ -9,7 +9,7 @@ type Props = {
 
 const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
   const { tags, isDarkMode } = usePersistStore();
-  console.log(tags);
+
   return (
     <ReactSelect
       isMulti

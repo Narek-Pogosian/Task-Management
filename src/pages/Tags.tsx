@@ -1,6 +1,6 @@
 import CreateTagDialog from "@/components/tags/CreateTagDialog";
 import DeleteTagDialog from "@/components/tags/DeleteTagDialog";
-import TagChip from "@/components/shared/TagChip";
+import TagChip from "@/components/tags/TagChip";
 import { usePersistStore } from "@/lib/store/persistStore";
 
 const Tags = () => {

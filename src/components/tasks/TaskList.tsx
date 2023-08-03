@@ -2,7 +2,7 @@ import useFilterTasks from "@/hooks/useFilterTasks";
 import { ConvertedTask } from "@/lib/types/db.types";
 import TaskCard from "./TaskCard";
 import { Input } from "../ui/input";
-import TagSelect from "../shared/TagSelect";
+import TagSelect from "../tags/TagSelect";
 
 type Props = {
   tasks: ConvertedTask[];
@@ -28,7 +28,7 @@ const TaskList = ({ tasks }: Props) => {
         />
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-2">
         {filteredTasks?.map((task) => (
           <TaskCard task={task} key={task.id} />
         ))}
