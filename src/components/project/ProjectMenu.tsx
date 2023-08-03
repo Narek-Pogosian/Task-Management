@@ -5,9 +5,9 @@ import {
 } from "@/components/ui/popover";
 import EditProjectDialog from "./EditProjectDialog";
 import DeleteProjectDialog from "./DeleteProjectDialog";
-import { Project } from "@/lib/types/db.types";
 import { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
+import { Project } from "@/lib/types/types";
 
 type Props = {
   project: Project;

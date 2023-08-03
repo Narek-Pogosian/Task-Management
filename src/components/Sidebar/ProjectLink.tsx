@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Project } from "@/lib/types/db.types";
 import ProjectMenu from "@/components/project/ProjectMenu";
+import { Project } from "@/lib/types/types";
 
 type Props = {
   project: Project;

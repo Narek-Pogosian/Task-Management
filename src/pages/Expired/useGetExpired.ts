@@ -1,12 +1,12 @@
 import { db } from "@/lib/db";
-import { Task } from "@/lib/types/db.types";
+import { TaskWithProject } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
 const getExpired = async () => {
   const { data, error } = await db
     .from("Tasks")
-    .select("*, projectId(*)")
+    .select("*, Projects(*)")
     .lt("expires_at", new Date().toDateString());
   if (error) throw error;
 
@@ -14,5 +14,8 @@ const getExpired = async () => {
 };
 
 export default function useGetExpired() {
-  return useQuery<Task[], PostgrestError>(["tasks", "expired"], getExpired);
+  return useQuery<TaskWithProject[], PostgrestError>(
+    ["tasks", "expired"],
+    getExpired
+  );
 }

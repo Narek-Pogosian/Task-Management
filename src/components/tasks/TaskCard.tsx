@@ -1,4 +1,4 @@
-import { ConvertedTask } from "@/lib/types/db.types";
+import { ConvertedTask } from "@/lib/types/types";
 import TagChip from "../tags/TagChip";
 import DeleteTaskDialog from "./DeleteTaskDialog";
 
@@ -14,7 +14,7 @@ const TaskCard = ({ task }: Props) => {
           <span className="block font-semibold">
             <span className="mr-4">{task.title}</span>
             <span className="text-sm text-muted-foreground">
-              {task.projectId?.name}
+              {task.Projects?.name}
             </span>
           </span>
           <span className="text-xs font-semibold text-muted-foreground ">

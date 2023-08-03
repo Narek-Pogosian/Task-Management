@@ -17,9 +17,13 @@ export default function useDeleteTask() {
 
   return useMutation(deleteTask, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"], {
+      queryClient.invalidateQueries({
+        predicate: (query) => {
+          return query.queryKey[0] === "tasks";
+        },
         refetchType: "active",
       });
+
       toast({ title: "Task deleted" });
     },
     onError: () => {

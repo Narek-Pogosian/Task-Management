@@ -41,6 +41,8 @@ const TaskForm = () => {
       tags: JSON.stringify(selectedTags),
       user_id: auth.session.user.id,
     });
+    // .select()
+    // .single();
 
     setIsSubmitting(false);
 
@@ -48,9 +50,6 @@ const TaskForm = () => {
       queryClient.invalidateQueries(["tasks"], {
         refetchType: "active",
       });
-      // queryClient.invalidateQueries({
-      //   predicate: (query) => query.queryKey[0] === "tasks",
-      // });
     }
 
     if (error) {

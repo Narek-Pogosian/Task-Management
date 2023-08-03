@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
-import { Task } from "@/lib/types/db.types";
+import { TaskWithProject } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
 const getAllTasks = async () => {
-  const { data, error } = await db.from("Tasks").select("*, projectId(*)");
+  const { data, error } = await db.from("Tasks").select("*, Projects(*)");
 
   if (error) throw error;
 
@@ -12,5 +12,8 @@ const getAllTasks = async () => {
 };
 
 export default function useGetAllTasks() {
-  return useQuery<Task[], PostgrestError>(["tasks", "all"], getAllTasks);
+  return useQuery<TaskWithProject[], PostgrestError>(
+    ["tasks", "all"],
+    getAllTasks
+  );
 }

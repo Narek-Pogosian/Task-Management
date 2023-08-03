@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Project } from "@/lib/types/db.types";
+import { Project } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 

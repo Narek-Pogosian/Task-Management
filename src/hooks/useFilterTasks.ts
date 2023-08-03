@@ -1,5 +1,5 @@
 import { Tag } from "@/lib/store/persistStore";
-import { ConvertedTask } from "@/lib/types/db.types";
+import { ConvertedTask } from "@/lib/types/types";
 import { useMemo, useState } from "react";
 
 export default function useFilterTasks(tasks: ConvertedTask[]) {

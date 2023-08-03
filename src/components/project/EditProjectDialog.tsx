@@ -9,9 +9,9 @@ import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
 import ProjectForm from "../forms/ProjectForm";
 import { FormEvent, useState } from "react";
-import { Project } from "@/lib/types/db.types";
 import useEditProject from "@/hooks/useEditProject";
 import LoadingButton from "../ui/loading-button";
+import { Project } from "@/lib/types/types";
 
 type Props = {
   project: Project;

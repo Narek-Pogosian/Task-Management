@@ -26,6 +26,9 @@ export default function useEditProject() {
   return useMutation(updateProject, {
     onSuccess: () => {
       queryClient.invalidateQueries(["projects"]);
+      queryClient.invalidateQueries(["tasks"], {
+        refetchType: "active",
+      });
       toast({
         title: "Project updated succesfully",
       });

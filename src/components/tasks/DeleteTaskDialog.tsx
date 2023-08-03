@@ -13,7 +13,7 @@ import LoadingButton from "../ui/loading-button";
 import { Trash } from "lucide-react";
 import { Button } from "../ui/button";
 import useDeleteTask from "@/hooks/useDeleteTask";
-import { ConvertedTask } from "@/lib/types/db.types";
+import { ConvertedTask } from "@/lib/types/types";
 
 type Props = {
   task: ConvertedTask;
@@ -21,7 +21,7 @@ type Props = {
 
 const DeleteTaskDialog = ({ task }: Props) => {
   const [open, setOpen] = useState(false);
-  const { isLoading, mutate: deleteProject } = useDeleteTask(task);
+  const { isLoading, mutate: deleteProject } = useDeleteTask();
 
   const onDelete = () => {
     deleteProject(task.id, {

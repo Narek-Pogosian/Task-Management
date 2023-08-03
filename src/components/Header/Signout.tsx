@@ -27,7 +27,6 @@ const Signout = () => {
       variant="outline"
       size="sm"
       onClick={handleSignout}
-      className="font-bold"
     >
       Sign Out
     </LoadingButton>
