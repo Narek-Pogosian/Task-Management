@@ -10,7 +10,9 @@ const Project = () => {
   return (
     <>
       <h1 className="h-8 text-2xl font-bold capitalize">
-        {isLoading ? "Loading..." : data && data[0]?.Projects?.name}
+        {isLoading
+          ? "Loading..."
+          : (data && data[0]?.Projects?.name) || "Empty Project"}
       </h1>
       <TaskPage isError={isError} isLoading={isLoading} tasks={data} />
     </>

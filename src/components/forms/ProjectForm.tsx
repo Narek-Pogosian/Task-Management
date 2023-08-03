@@ -1,15 +1,14 @@
-import { FormEvent, ReactNode, useState } from "react";
+import { FormEvent, ReactNode } from "react";
 import { Input } from "../ui/input";
 
 type Props = {
   children: ReactNode;
   onSubmit: (e: FormEvent, name: string) => Promise<void>;
-  initialName?: string;
+  name: string;
+  setName: (name: string) => void;
 };
 
-const NewProjectForm = ({ children, onSubmit, initialName }: Props) => {
-  const [name, setName] = useState(initialName ?? "");
-
+const NewProjectForm = ({ children, onSubmit, name, setName }: Props) => {
   return (
     <form className="grid gap-6" onSubmit={(e) => onSubmit(e, name)}>
       <div>

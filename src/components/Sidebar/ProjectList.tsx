@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useGetProjects from "@/hooks/useGetProjects";
 import ProjectLink from "./ProjectLink";
+import { Loader2 } from "lucide-react";
 
 const ProjectList = () => {
   const { data: projects, isLoading, isError } = useGetProjects();
@@ -8,13 +9,8 @@ const ProjectList = () => {
 
   if (isLoading) {
     return (
-      <div className="grid gap-2">
-        {new Array(4).fill(0).map((_, i) => (
-          <div
-            className="h-8 rounded-md bg-border/60 animate-pulse"
-            key={i}
-          ></div>
-        ))}
+      <div className="flex justify-center pt-6">
+        <Loader2 className="w-10 h-10 animate-spin" />
       </div>
     );
   }

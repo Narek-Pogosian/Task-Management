@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { ConvertedTask, Task } from "./types/db.types";
+import { ConvertedTask, Task } from "./types/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,4 +14,18 @@ export const convertTaskList = (tasks: Task[]): ConvertedTask[] => {
   });
 
   return convertedTasks;
+};
+
+export const getQueryKey = (date: string) => {
+  if (date < new Date().toDateString()) {
+    return "expired";
+  }
+
+  if (date === new Date().toDateString()) {
+    return "today";
+  }
+
+  if (date > new Date().toDateString()) {
+    return "upcoming";
+  }
 };

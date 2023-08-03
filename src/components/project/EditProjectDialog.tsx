@@ -20,6 +20,7 @@ type Props = {
 
 const EditProjectDialog = ({ project, closeDropdown }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState(project.name);
   const { isLoading, mutate: editProject } = useEditProject();
 
   const closeDialog = () => {
@@ -27,8 +28,10 @@ const EditProjectDialog = ({ project, closeDropdown }: Props) => {
     closeDropdown();
   };
 
-  const onSubmit = async (e: FormEvent, name: string) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!name.trim()) return;
 
     editProject(
       { name, projectId: project.id },
@@ -64,7 +67,7 @@ const EditProjectDialog = ({ project, closeDropdown }: Props) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="mb-4">Edit the project name.</DialogTitle>
-          <ProjectForm onSubmit={onSubmit} initialName={project.name}>
+          <ProjectForm onSubmit={onSubmit} name={name} setName={setName}>
             <Button variant="outline" onClick={closeDialog} type="button">
               Cancel
             </Button>
@@ -72,6 +75,7 @@ const EditProjectDialog = ({ project, closeDropdown }: Props) => {
               isLoading={isLoading}
               loadingText="Editing"
               type="submit"
+              disabled={!name.trim() || name === project.name}
             >
               Edit
             </LoadingButton>

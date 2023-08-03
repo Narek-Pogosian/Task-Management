@@ -78,6 +78,10 @@
   body {
     @apply overflow-y-hidden bg-background text-foreground;
   }
+
+  a {
+    @apply transition-colors rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
 }
 
 html,

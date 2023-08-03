@@ -8,6 +8,7 @@ const getProjectTasks = async (projectId: string) => {
     .eq("projectId", projectId);
 
   if (error) throw error;
+
   return data;
 };
 

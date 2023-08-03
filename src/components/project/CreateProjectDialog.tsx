@@ -15,8 +15,9 @@ import LoadingButton from "../ui/loading-button";
 const CreateProjectDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoading, mutate: createProject } = useCreateProject();
+  const [name, setName] = useState("");
 
-  const onSubmit = async (e: FormEvent, name: string) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!name.trim()) return;
@@ -38,7 +39,7 @@ const CreateProjectDialog = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="mb-4">Create a new project.</DialogTitle>
-          <ProjectForm onSubmit={onSubmit}>
+          <ProjectForm onSubmit={onSubmit} name={name} setName={setName}>
             <Button
               variant="outline"
               onClick={() => setIsOpen(false)}
@@ -49,6 +50,7 @@ const CreateProjectDialog = () => {
             <LoadingButton
               isLoading={isLoading}
               loadingText="Creating..."
+              disabled={!name.trim()}
               type="submit"
             >
               Create

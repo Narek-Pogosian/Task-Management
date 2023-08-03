@@ -20,12 +20,18 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           ...styles,
           borderWidth: "1px",
           backgroundColor: isDarkMode ? "#020817" : "white",
-          borderColor: isDarkMode ? "#1e293b" : "#e2e8f0",
           fontSize: "14px",
+          borderColor: isFocused
+            ? "#6366f1"
+            : isDarkMode
+            ? "#1e293b"
+            : "#e2e8f0",
+
           "&:hover": {
             borderColor: isFocused ? "#6366f1" : "",
             cursor: "text",
           },
+
           boxShadow: isFocused ? "0 0 0 2px #6366f160" : "",
         }),
         placeholder: (styles) => ({

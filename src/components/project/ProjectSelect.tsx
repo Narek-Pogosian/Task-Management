@@ -32,11 +32,13 @@ const ProjectSelect = ({ setProject }: Props) => {
           ) : projects?.length == 0 ? (
             <span className="pl-2 text-sm font-semibold">No Projects</span>
           ) : (
-            projects?.map((project) => (
-              <SelectItem value={project.id} key={project.id}>
-                {project.name}
-              </SelectItem>
-            ))
+            <>
+              {projects?.map((project) => (
+                <SelectItem value={project.id} key={project.id}>
+                  {project.name}
+                </SelectItem>
+              ))}
+            </>
           )}
         </SelectGroup>
       </SelectContent>

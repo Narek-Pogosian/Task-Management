@@ -10,13 +10,13 @@ type Props = {
 const ProjectLink = ({ project, active }: Props) => {
   return (
     <div
-      className={`px-2 flex items-center justify-between gap-2 group rounded hover:bg-border/60 ${
+      className={`flex items-center justify-between gap-2 group rounded hover:bg-border/60 ${
         active ? "bg-border/60" : ""
       }`}
     >
       <Link
         to={`/project/${project.id}`}
-        className="flex-1 h-full py-2 capitalize"
+        className="flex-1 h-full px-2 py-2 capitalize"
       >
         {project.name}
       </Link>
