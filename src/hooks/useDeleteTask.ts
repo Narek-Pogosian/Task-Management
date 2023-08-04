@@ -1,28 +1,48 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import { Task } from "@/lib/types/types";
+import { getQueryKey } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const deleteTask = async (taskId: string) => {
-  const { error } = await db.from("Tasks").delete().eq("id", taskId);
+  const { error, data } = await db
+    .from("Tasks")
+    .delete()
+    .eq("id", taskId)
+    .select("*")
+    .single();
 
   if (error) {
     throw error;
   }
 
-  return true;
+  return data;
 };
 
 export default function useDeleteTask() {
   const queryClient = useQueryClient();
 
   return useMutation(deleteTask, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        predicate: (query) => {
-          return query.queryKey[0] === "tasks";
-        },
-        refetchType: "active",
+    onSuccess: (data) => {
+      queryClient.setQueryData(["tasks", "all"], (oldData?: Task[]) => {
+        return oldData?.filter((task) => task.id !== data.id);
       });
+
+      if (data.projectId) {
+        queryClient.setQueryData(
+          ["tasks", data.projectId],
+          (oldData?: Task[]) => {
+            return oldData?.filter((task) => task.id !== data.id);
+          }
+        );
+      }
+
+      if (data.expires_at) {
+        const key = getQueryKey(data.expires_at);
+        queryClient.setQueryData(["tasks", key], (oldData?: Task[]) => {
+          return oldData?.filter((task) => task.id !== data.id);
+        });
+      }
 
       toast({ title: "Task deleted" });
     },

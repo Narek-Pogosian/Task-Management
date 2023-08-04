@@ -37,7 +37,9 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
           <Loader2 className="w-14 h-14 animate-spin" strokeWidth={3} />
         </div>
       ) : isError ? (
-        <p className="pt-24 text-3xl font-bold text-red-500">Error</p>
+        <p className="pt-24 text-4xl font-bold text-center text-red-500">
+          Error
+        </p>
       ) : (
         <TaskList tasks={filteredTasks} />
       )}

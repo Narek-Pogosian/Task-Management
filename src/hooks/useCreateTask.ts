@@ -1,6 +1,7 @@
 import { TaskFormData } from "@/components/forms/TaskForm";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import { getQueryKey } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const createTask = async ({
@@ -37,8 +38,18 @@ const createTask = async ({
 export default function useCreateTask() {
   const queryClient = useQueryClient();
   return useMutation(createTask, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["tasks", "all"]);
+
+      if (data.expires_at) {
+        const key = getQueryKey(data.expires_at);
+        queryClient.invalidateQueries(["tasks", key]);
+      }
+
+      if (data.projectId) {
+        queryClient.invalidateQueries(["tasks", data.projectId]);
+      }
+
       toast({
         title: "Task created succesfully",
       });

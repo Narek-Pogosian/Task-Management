@@ -1,7 +1,7 @@
 import { ConvertedTask } from "@/lib/types/types";
 import TagChip from "../tags/TagChip";
-import DeleteTaskDialog from "./DeleteTaskDialog";
 import EditTaskDialog from "./EditTaskDialog";
+import DeleteTaskDialog from "./DeleteTaskDialog";
 
 type Props = {
   task: ConvertedTask;
@@ -9,29 +9,29 @@ type Props = {
 
 const TaskCard = ({ task }: Props) => {
   return (
-    <div className="px-4 py-3 border-b">
+    <div className="relative px-2 pt-2 pb-4 border-b">
       <div className="flex justify-between">
         <div className="pr-4 leading-5">
           <span className="block font-semibold">
-            <span className="mr-4">{task.title}</span>
-            <span className="text-sm text-muted-foreground">
+            <span className="mr-4 text-sm md:text-base">{task.title}</span>
+            <span className="block text-sm text-muted-foreground sm:inline">
               {task.Projects?.name}
             </span>
           </span>
           <span className="text-xs font-semibold text-muted-foreground ">
             {task.expires_at}
           </span>
+          <div className="flex flex-wrap gap-2 mt-4">
+            {task.tags?.map((tag) => (
+              <TagChip text={tag.label} color={tag.color} key={tag.value} />
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-4">
+
+        <div className="flex items-center gap-2">
           <EditTaskDialog task={task} />
           <DeleteTaskDialog task={task} />
         </div>
-      </div>
-
-      <div className="flex flex-wrap gap-2 mt-4">
-        {task.tags?.map((tag) => (
-          <TagChip text={tag.label} color={tag.color} key={tag.value} />
-        ))}
       </div>
     </div>
   );

@@ -17,15 +17,17 @@ export const convertTaskList = (tasks: Task[]): ConvertedTask[] => {
 };
 
 export const getQueryKey = (date: string) => {
-  if (date < new Date().toDateString()) {
-    return "expired";
-  }
+  const currentDate = new Date().toISOString().split("T")[0]!;
 
-  if (date === new Date().toDateString()) {
+  if (date == currentDate) {
     return "today";
   }
 
-  if (date > new Date().toDateString()) {
+  if (date < currentDate) {
+    return "expired";
+  }
+
+  if (date > currentDate) {
     return "upcoming";
   }
 };

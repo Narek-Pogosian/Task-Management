@@ -14,6 +14,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
     <ReactSelect
       isMulti
       placeholder={placeholder}
+      id="tags"
       maxMenuHeight={160}
       styles={{
         control: (styles, { isFocused }) => ({

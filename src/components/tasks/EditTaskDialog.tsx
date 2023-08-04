@@ -33,9 +33,9 @@ const EditTaskDialog = ({ task }: Props) => {
   return (
     <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <Button size="icon" variant="outline">
+        <Button size="icon" variant="ghost">
           <span className="sr-only">Edit Task</span>
-          <Pencil className="w-5 h-5" />
+          <Pencil className="w-4 h-4" />
         </Button>
       </DialogTrigger>
       <DialogContent>

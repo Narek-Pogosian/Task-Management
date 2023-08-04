@@ -37,8 +37,10 @@ const DeleteTagDialog = ({ id }: Props) => {
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. The project and all its tasks will be
-            deleted.
+            The tag will be deleted and will not be available in filters and
+            task create options. It will still show as a tag in tasks that have
+            it, if you need it again you can create a new tag with same name and
+            color.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
