@@ -40,10 +40,11 @@ export default function useEditTask() {
   const queryClient = useQueryClient();
   return useMutation(editTask, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
-      toast({
-        title: "Task updated succesfully",
+      queryClient.invalidateQueries(["tasks"], {
+        refetchType: "active",
       });
+
+      toast({ title: "Task edited" });
     },
     onError: () => {
       toast({
