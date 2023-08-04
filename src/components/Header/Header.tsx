@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import Signout from "./Signout";
 import ToggleTheme from "./ToggleTheme";
-import Logo from "./Logo";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import MobileSidebar from "./MobileSidebar";
-import { Button } from "../ui/button";
-import { Plus } from "lucide-react";
+import Logo from "./Logo";
 
 const Header = () => {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -20,11 +18,6 @@ const Header = () => {
         <Logo size="sm" />
       </Link>
       <div className="flex items-start gap-2">
-        <Button size="icon" variant="outline" asChild>
-          <Link to="/task/create">
-            <Plus className="w-5 h-5" />
-          </Link>
-        </Button>
         <ToggleTheme />
         {isDesktop ? <Signout /> : <MobileSidebar />}
       </div>

@@ -1,77 +1,47 @@
-import { FormEvent, useState } from "react";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+import { FormEvent, ReactNode, useState } from "react";
 import ProjectSelect from "../project/ProjectSelect";
 import CreateTagDialog from "../tags/CreateTagDialog";
+import DatePicker from "../ui/date-picker";
+import { Input } from "../ui/input";
 import TagSelect from "../tags/TagSelect";
 import { Tag } from "@/lib/store/persistStore";
-import { db } from "@/lib/db";
-import { toast } from "../ui/use-toast";
-import LoadingButton from "../ui/loading-button";
-import DatePicker from "../ui/date-picker";
-import { useQueryClient } from "@tanstack/react-query";
 
-const TaskForm = () => {
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState<Date>();
-  const [project, setProject] = useState<string | null>(null);
-  const queryClient = useQueryClient();
+export interface TaskFormData {
+  title: string;
+  selectedTags: Tag[];
+  expiresAt: Date | undefined;
+  projectId: string | null;
+  id?: string;
+}
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+type Props = {
+  children: ReactNode;
+  initialData?: TaskFormData;
+  submitFn: (e: FormEvent, data: TaskFormData) => void;
+};
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!title) return;
-    setIsSubmitting(true);
-
-    const { data: auth, error: authError } = await db.auth.getSession();
-
-    if (authError || !auth.session) {
-      throw new Error("Unauthorized");
-    }
-
-    const { error } = await db.from("Tasks").insert({
-      projectId: project,
-      title: title,
-      description: description,
-      expires_at: date?.toDateString(),
-      tags: JSON.stringify(selectedTags),
-      user_id: auth.session.user.id,
-    });
-    // .select()
-    // .single();
-
-    setIsSubmitting(false);
-
-    if (!error) {
-      queryClient.invalidateQueries(["tasks"], {
-        refetchType: "active",
-      });
-    }
-
-    if (error) {
-      toast({
-        variant: "destructive",
-        title: "Something went wrong",
-      });
-    }
-  };
+const TaskForm = ({ children, initialData, submitFn }: Props) => {
+  const [title, setTitle] = useState(initialData?.title ?? "");
+  const [projectId, setProjectId] = useState(initialData?.projectId ?? null);
+  const [expiresAt, setExpiresAt] = useState(
+    initialData?.expiresAt ?? undefined
+  );
+  const [selectedTags, setSelectedTags] = useState(
+    initialData?.selectedTags ?? []
+  );
 
   return (
-    <form className="grid gap-4 @container" onSubmit={handleSubmit}>
+    <form
+      className="grid gap-4 @container"
+      onSubmit={(e) =>
+        submitFn(e, { title, projectId, expiresAt, selectedTags })
+      }
+    >
       <Input
         id="title"
         placeholder="Title"
+        value={title}
         onChange={(e) => setTitle(e.target.value)}
-      />
-      <Textarea
-        placeholder="Description (optional)"
-        rows={2}
-        className="resize-none"
-        onChange={(e) => setDescription(e.target.value)}
       />
 
       <div className="grid @md:grid-cols-4 gap-4">
@@ -86,19 +56,11 @@ const TaskForm = () => {
       </div>
 
       <div className="grid gap-4 @md:grid-cols-2">
-        <DatePicker date={date} setDate={setDate} />
-        <ProjectSelect setProject={setProject} />
+        <DatePicker date={expiresAt} setDate={setExpiresAt} />
+        <ProjectSelect setProject={setProjectId} projectId={projectId} />
       </div>
 
-      <div className="flex justify-end gap-4">
-        <LoadingButton
-          isLoading={isSubmitting}
-          loadingText="Creating..."
-          type="submit"
-        >
-          Create
-        </LoadingButton>
-      </div>
+      <div className="flex justify-end gap-4">{children}</div>
     </form>
   );
 };

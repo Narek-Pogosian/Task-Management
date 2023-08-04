@@ -1,9 +1,14 @@
+import { TaskFormData } from "@/components/forms/TaskForm";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
-import { Project } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const createProject = async (name: string) => {
+const createTask = async ({
+  expiresAt,
+  projectId,
+  selectedTags,
+  title,
+}: TaskFormData) => {
   const { data: auth, error: authError } = await db.auth.getSession();
 
   if (authError || !auth.session) {
@@ -11,8 +16,14 @@ const createProject = async (name: string) => {
   }
 
   const { error, data } = await db
-    .from("Projects")
-    .insert({ name: name, user_id: auth.session.user.id })
+    .from("Tasks")
+    .insert({
+      title,
+      user_id: auth.session.user.id,
+      expires_at: expiresAt?.toDateString(),
+      projectId,
+      tags: JSON.stringify(selectedTags),
+    })
     .select()
     .single();
 
@@ -23,16 +34,13 @@ const createProject = async (name: string) => {
   return data;
 };
 
-export default function useCreateProject() {
+export default function useCreateTask() {
   const queryClient = useQueryClient();
-  return useMutation(createProject, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(["projects"], (oldData?: Project[]) => {
-        return [...(oldData as Project[]), data];
-      });
-
+  return useMutation(createTask, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["tasks"]);
       toast({
-        title: "Project created succesfully",
+        title: "Task created succesfully",
       });
     },
     onError: () => {

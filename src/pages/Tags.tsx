@@ -7,7 +7,7 @@ const Tags = () => {
   const { tags } = usePersistStore();
 
   return (
-    <div className="max-w-3xl pt-10 mx-auto">
+    <div className="max-w-3xl pt-6 mx-auto">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold">Tags</h1>
         <CreateTagDialog />

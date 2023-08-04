@@ -1,12 +1,13 @@
 import TaskPage from "@/components/tasks/TaskPage";
 import useGetUpcoming from "./useGetUpcoming";
+import PageTitle from "@/components/PageTitle";
 
 const Upcoming = () => {
   const { data, isError, isLoading } = useGetUpcoming();
 
   return (
     <>
-      <h1 className="text-2xl font-bold">Upcoming</h1>
+      <PageTitle title="Upcoming" />
       <TaskPage isError={isError} isLoading={isLoading} tasks={data} />
     </>
   );

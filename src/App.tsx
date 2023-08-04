@@ -4,7 +4,6 @@ import Login from "./pages/Login/Login";
 import AppLayout from "./layout/AppLayout";
 import Project from "./pages/Project/Project";
 import Tags from "./pages/Tags";
-import CreateTask from "./pages/CreateTask/CreateTask";
 import AllTasks from "./pages/AllTasks/AllTasks";
 import Today from "./pages/Today/Today";
 import Expired from "./pages/Expired/Expired";
@@ -23,7 +22,6 @@ const App = () => {
         <Route path="expired" element={<Expired />} />
 
         <Route path="project/:projectId" element={<Project />} />
-        <Route path="task/create" element={<CreateTask />} />
         <Route path="tags" element={<Tags />} />
       </Route>
       <Route path="*" element={<Navigate to="/today" replace />} />

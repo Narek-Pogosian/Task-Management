@@ -1,3 +1,4 @@
+import PageTitle from "@/components/PageTitle";
 import TaskPage from "@/components/tasks/TaskPage";
 import useGetToday from "@/pages/Today/useGetToday";
 
@@ -6,7 +7,7 @@ const Today = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">Today</h1>
+      <PageTitle title="Today" />
       <TaskPage isError={isError} isLoading={isLoading} tasks={data} />
     </>
   );

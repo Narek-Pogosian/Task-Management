@@ -10,13 +10,17 @@ import useGetProjects from "@/hooks/useGetProjects";
 
 type Props = {
   setProject: (value: string) => void;
+  projectId?: string | null;
 };
 
-const ProjectSelect = ({ setProject }: Props) => {
+const ProjectSelect = ({ setProject, projectId }: Props) => {
   const { data: projects, isError } = useGetProjects();
 
   return (
-    <Select onValueChange={setProject}>
+    <Select
+      onValueChange={setProject}
+      value={projectId ? projectId : undefined}
+    >
       <SelectTrigger className="w-full">
         <SelectValue
           placeholder="Project (optional)"
@@ -34,7 +38,11 @@ const ProjectSelect = ({ setProject }: Props) => {
           ) : (
             <>
               {projects?.map((project) => (
-                <SelectItem value={project.id} key={project.id}>
+                <SelectItem
+                  value={project.id}
+                  key={project.id}
+                  data-state={project.id}
+                >
                   {project.name}
                 </SelectItem>
               ))}

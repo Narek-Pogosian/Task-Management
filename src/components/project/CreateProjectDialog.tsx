@@ -25,6 +25,7 @@ const CreateProjectDialog = () => {
     createProject(name, {
       onSettled: () => {
         setIsOpen(false);
+        setName("");
       },
     });
   };
@@ -32,7 +33,8 @@ const CreateProjectDialog = () => {
   return (
     <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <Button size="icon" variant="ghost" aria-label="Create project">
+        <Button size="icon" variant="ghost">
+          <span className="sr-only">Create Project</span>
           <Plus className="w-5 h-5" />
         </Button>
       </DialogTrigger>

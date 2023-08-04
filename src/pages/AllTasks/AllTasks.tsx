@@ -1,3 +1,4 @@
+import PageTitle from "@/components/PageTitle";
 import TaskPage from "@/components/tasks/TaskPage";
 import useGetAllTasks from "@/pages/AllTasks/useGetAllTasks";
 
@@ -6,7 +7,7 @@ const AllTasks = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">All Tasks</h1>
+      <PageTitle title="All tasks" />
       <TaskPage isError={isError} isLoading={isLoading} tasks={data} />
     </>
   );
