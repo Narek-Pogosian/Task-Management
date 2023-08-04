@@ -37,7 +37,18 @@ const CreateTaskDialog = () => {
         <DialogHeader>
           <DialogTitle className="mb-4">Create a new task.</DialogTitle>
           <TaskForm submitFn={handleSubmit}>
-            <LoadingButton isLoading={isLoading} loadingText="Creating...">
+            <Button
+              variant="outline"
+              onClick={() => setIsOpen(false)}
+              type="button"
+            >
+              Cancel
+            </Button>
+            <LoadingButton
+              isLoading={isLoading}
+              loadingText="Creating..."
+              type="submit"
+            >
               Create
             </LoadingButton>
           </TaskForm>

@@ -44,13 +44,26 @@ const EditTaskDialog = ({ task }: Props) => {
           <TaskForm
             submitFn={handleSubmit}
             initialData={{
-              expiresAt: new Date(task.expires_at!),
+              expiresAt: task.expires_at
+                ? new Date(task.expires_at)
+                : undefined,
               projectId: task.projectId,
               selectedTags: task.tags,
               title: task.title,
             }}
           >
-            <LoadingButton isLoading={isLoading} loadingText="Editing...">
+            <Button
+              variant="outline"
+              onClick={() => setIsOpen(false)}
+              type="button"
+            >
+              Cancel
+            </Button>
+            <LoadingButton
+              isLoading={isLoading}
+              loadingText="Editing..."
+              type="submit"
+            >
               Edit
             </LoadingButton>
           </TaskForm>

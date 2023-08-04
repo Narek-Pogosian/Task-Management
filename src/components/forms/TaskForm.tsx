@@ -23,9 +23,7 @@ type Props = {
 const TaskForm = ({ children, initialData, submitFn }: Props) => {
   const [title, setTitle] = useState(initialData?.title ?? "");
   const [projectId, setProjectId] = useState(initialData?.projectId ?? null);
-  const [expiresAt, setExpiresAt] = useState(
-    initialData?.expiresAt ?? undefined
-  );
+  const [expiresAt, setExpiresAt] = useState(initialData?.expiresAt);
   const [selectedTags, setSelectedTags] = useState(
     initialData?.selectedTags ?? []
   );
