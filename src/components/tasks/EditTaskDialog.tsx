@@ -8,9 +8,9 @@ import {
 import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
 import { FormEvent, useState } from "react";
-import TaskForm, { TaskFormData } from "../forms/TaskForm";
+import TaskForm from "../forms/TaskForm";
 import LoadingButton from "../ui/loading-button";
-import { ConvertedTask } from "@/lib/types/types";
+import { ConvertedTask, TaskFormData } from "@/lib/types/types";
 import useEditTask from "@/hooks/useEditTask";
 
 type Props = {

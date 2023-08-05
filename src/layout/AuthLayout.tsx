@@ -1,7 +1,7 @@
+import Logo from "@/components/header/Logo";
 import { db } from "@/lib/db";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../components/header/Logo";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();

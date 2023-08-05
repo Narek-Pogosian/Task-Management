@@ -8,9 +8,10 @@ import {
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import { FormEvent, useState } from "react";
-import TaskForm, { TaskFormData } from "../forms/TaskForm";
+import TaskForm from "../forms/TaskForm";
 import useCreateTask from "@/hooks/useCreateTask";
 import LoadingButton from "../ui/loading-button";
+import { TaskFormData } from "@/lib/types/types";
 
 const CreateTaskDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
