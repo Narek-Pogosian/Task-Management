@@ -1,4 +1,4 @@
-import Logo from "@/components/header/Logo";
+import Logo from "../components/header/Logo";
 import { db } from "@/lib/db";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
