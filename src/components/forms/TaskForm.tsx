@@ -4,15 +4,7 @@ import CreateTagDialog from "../tags/CreateTagDialog";
 import DatePicker from "../ui/date-picker";
 import { Input } from "../ui/input";
 import TagSelect from "../tags/TagSelect";
-import { Tag } from "@/lib/store/persistStore";
-
-export interface TaskFormData {
-  title: string;
-  selectedTags: Tag[];
-  expiresAt: Date | undefined;
-  projectId: string | null;
-  id?: string;
-}
+import type { TaskFormData } from "@/lib/types/types";
 
 type Props = {
   children: ReactNode;
@@ -58,7 +50,10 @@ const TaskForm = ({ children, initialData, submitFn }: Props) => {
         <ProjectSelect setProject={setProjectId} projectId={projectId} />
       </div>
 
-      <div className="flex justify-end gap-4">{children}</div>
+      <div className="flex justify-end gap-4">
+        {/* Action Buttons */}
+        {children}
+      </div>
     </form>
   );
 };

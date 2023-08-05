@@ -21,10 +21,10 @@ type Props = {
 
 const DeleteTaskDialog = ({ task }: Props) => {
   const [open, setOpen] = useState(false);
-  const { isLoading, mutate: deleteProject } = useDeleteTask();
+  const { isLoading, mutateAsync: deleteProject } = useDeleteTask();
 
-  const onDelete = () => {
-    deleteProject(task.id, {
+  const onDelete = async () => {
+    await deleteProject(task.id, {
       onSuccess: () => {
         setOpen(false);
       },

@@ -21,10 +21,10 @@ type Props = {
 
 const DeleteProjectDialog = ({ projectId, closeDropdown }: Props) => {
   const [open, setOpen] = useState(false);
-  const { isLoading, mutate: deleteProject } = useDeleteProject(projectId);
+  const { isLoading, mutateAsync: deleteProject } = useDeleteProject(projectId);
 
-  const onDelete = () => {
-    deleteProject(projectId, {
+  const onDelete = async () => {
+    await deleteProject(projectId, {
       onSettled: () => {
         setOpen(false);
         closeDropdown();

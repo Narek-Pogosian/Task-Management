@@ -10,3 +10,11 @@ export interface TaskWithProject extends Task {
 export interface ConvertedTask extends Omit<TaskWithProject, "tags"> {
   tags: Tag[];
 }
+
+export interface TaskFormData {
+  title: string;
+  selectedTags: Tag[];
+  expiresAt: Date | undefined;
+  projectId: string | null;
+  id?: string;
+}

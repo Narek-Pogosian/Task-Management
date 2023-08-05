@@ -19,7 +19,7 @@ const TagForm = ({ setIsOpen }: Props) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Needed for when used in taskform
 
     if (!title.trim() || !color) {
       setError(true);

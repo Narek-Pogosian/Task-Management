@@ -14,7 +14,7 @@ import LoadingButton from "../ui/loading-button";
 
 const CreateProjectDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoading, mutate: createProject } = useCreateProject();
+  const { isLoading, mutateAsync: createProject } = useCreateProject();
   const [name, setName] = useState("");
 
   const onSubmit = async (e: FormEvent) => {
@@ -22,7 +22,7 @@ const CreateProjectDialog = () => {
 
     if (!name.trim()) return;
 
-    createProject(name, {
+    await createProject(name, {
       onSettled: () => {
         setIsOpen(false);
         setName("");

@@ -1,6 +1,6 @@
-import { TaskFormData } from "@/components/forms/TaskForm";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import type { TaskFormData } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const editTask = async ({
@@ -40,6 +40,7 @@ export default function useEditTask() {
   const queryClient = useQueryClient();
   return useMutation(editTask, {
     onSuccess: () => {
+      // TODO: use query cache instead, had problems with when the project is changed
       queryClient.invalidateQueries(["tasks"], {
         refetchType: "active",
       });

@@ -1,5 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import { ConvertedTask, Project } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const updateProject = async ({
@@ -9,26 +10,38 @@ const updateProject = async ({
   name: string;
   projectId: string;
 }) => {
-  const { error } = await db
+  const { error, data } = await db
     .from("Projects")
     .update({ name: name })
-    .eq("id", projectId);
+    .eq("id", projectId)
+    .select()
+    .single();
 
   if (error) {
     throw error;
   }
 
-  return true;
+  return data;
 };
 
 export default function useEditProject() {
   const queryClient = useQueryClient();
   return useMutation(updateProject, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["projects"]);
-      queryClient.invalidateQueries(["tasks"], {
-        refetchType: "active",
+    onSuccess: (newProject) => {
+      queryClient.setQueryData(["projects"], (oldData?: Project[]) => {
+        return oldData?.map((project) =>
+          project.id === newProject.id ? newProject : project
+        );
       });
+
+      queryClient.setQueriesData(["tasks"], (oldData?: ConvertedTask[]) => {
+        return oldData?.map((task) =>
+          task.Projects?.id === newProject.id
+            ? { ...task, Projects: newProject }
+            : task
+        );
+      });
+
       toast({
         title: "Project updated succesfully",
       });

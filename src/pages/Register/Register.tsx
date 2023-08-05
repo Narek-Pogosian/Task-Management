@@ -20,7 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useRegister from "@/pages/Register/useRegister";
 
 const Register = () => {
-  const { isLoading, error, mutate: register } = useRegister();
+  const { isLoading, error, mutateAsync: register } = useRegister();
   const navigate = useNavigate();
 
   const form = useForm<RegisterSchemaType>({
@@ -33,7 +33,7 @@ const Register = () => {
   });
 
   const onSubmit = async (values: RegisterSchemaType) => {
-    register(values, {
+    await register(values, {
       onSuccess: () => navigate("/"),
     });
   };

@@ -26,7 +26,7 @@ const buttonVariants = cva(
         xs: "text-xs px-2 py-1",
         lg: "h-11 px-8",
         icon: "h-8 w-8",
-        dropdown: "pl-1 py-2 w-full",
+        dropdown: "pl-2 py-2 w-full",
       },
     },
     defaultVariants: {

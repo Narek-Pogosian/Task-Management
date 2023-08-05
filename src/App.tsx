@@ -20,9 +20,8 @@ const App = () => {
         <Route path="all" element={<AllTasks />} />
         <Route path="upcoming" element={<Upcoming />} />
         <Route path="expired" element={<Expired />} />
-
-        <Route path="project/:projectId" element={<Project />} />
         <Route path="tags" element={<Tags />} />
+        <Route path="project/:projectId" element={<Project />} />
       </Route>
       <Route path="*" element={<Navigate to="/today" replace />} />
     </Routes>

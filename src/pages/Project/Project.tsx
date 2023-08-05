@@ -12,6 +12,8 @@ const Project = () => {
     <>
       <div className="flex items-center justify-between gap-12 lg:justify-start">
         <h1 className="h-8 text-2xl font-bold capitalize">
+          // TODO: Fix, if project has no tasks then we dont get the project
+          name
           {isLoading
             ? "Loading..."
             : (data && data[0]?.Projects?.name) || "Empty Project"}

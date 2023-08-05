@@ -17,7 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useLogin from "./useLogin";
 
 const Login = () => {
-  const { isLoading, error, mutate: signin } = useLogin();
+  const { isLoading, error, mutateAsync: signin } = useLogin();
   const navigate = useNavigate();
 
   const form = useForm<LoginSchemaType>({
@@ -29,13 +29,13 @@ const Login = () => {
   });
 
   const onSubmit = async (values: LoginSchemaType) => {
-    signin(values, {
+    await signin(values, {
       onSuccess: () => navigate("/"),
     });
   };
 
-  const demoSignin = () => {
-    signin(
+  const demoSignin = async () => {
+    await signin(
       { email: "demo@demo.com", password: "Wefo2ewo1erXtr" },
       {
         onSuccess: () => navigate("/"),

@@ -21,7 +21,7 @@ type Props = {
 const EditProjectDialog = ({ project, closeDropdown }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState(project.name);
-  const { isLoading, mutate: editProject } = useEditProject();
+  const { isLoading, mutateAsync: editProject } = useEditProject();
 
   const closeDialog = () => {
     setIsOpen(false);
@@ -33,7 +33,7 @@ const EditProjectDialog = ({ project, closeDropdown }: Props) => {
 
     if (!name.trim()) return;
 
-    editProject(
+    await editProject(
       { name, projectId: project.id },
       {
         onSettled: () => {

@@ -1,16 +1,22 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import { Project, Task } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
 const deleteProject = async (projectId: string) => {
-  const { error } = await db.from("Projects").delete().eq("id", projectId);
+  const { error, data } = await db
+    .from("Projects")
+    .delete()
+    .eq("id", projectId)
+    .select("id")
+    .single();
 
   if (error) {
     throw error;
   }
 
-  return true;
+  return data;
 };
 
 export default function useDeleteProject(projectId: string) {
@@ -19,9 +25,15 @@ export default function useDeleteProject(projectId: string) {
   const navigate = useNavigate();
 
   return useMutation(deleteProject, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["tasks"]);
-      queryClient.invalidateQueries(["projects"]);
+    onSuccess: ({ id }) => {
+      queryClient.setQueryData(["projects"], (oldData?: Project[]) => {
+        return oldData?.filter((project) => project.id !== id);
+      });
+
+      queryClient.setQueriesData(["tasks"], (oldData?: Task[]) => {
+        return oldData?.filter((task) => task.projectId !== id);
+      });
+
       toast({ title: "Project deleted" });
 
       if (currentProjectId === projectId) {

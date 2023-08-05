@@ -1,6 +1,6 @@
-import { TaskFormData } from "@/components/forms/TaskForm";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
+import type { TaskFormData } from "@/lib/types/types";
 import { getQueryKey } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
