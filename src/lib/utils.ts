@@ -17,6 +17,7 @@ export const convertTaskList = (tasks: Task[]): ConvertedTask[] => {
 };
 
 export const getQueryKey = (date: string) => {
+  // ! WARNING: Timezones dont match
   const currentDate = new Date().toISOString().split("T")[0]!;
 
   if (date == currentDate) {

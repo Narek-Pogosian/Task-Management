@@ -18,7 +18,7 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
 
   return (
     <>
-      <h2 className="mt-4 mb-1 font-semibold">Filters</h2>
+      <h2 className="mt-6 mb-1 font-semibold">Filters</h2>
       <div className="flex flex-col max-w-xl gap-4 mb-8 xs:flex-row">
         <Input
           type="text"
@@ -37,9 +37,9 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
           <Loader2 className="w-14 h-14 animate-spin" strokeWidth={3} />
         </div>
       ) : isError ? (
-        <p className="pt-24 text-4xl font-bold text-center text-red-500">
+        <div className="pt-24 text-4xl font-bold text-center text-rose-500">
           Error
-        </p>
+        </div>
       ) : (
         <TaskList tasks={filteredTasks} />
       )}
