@@ -1,5 +1,5 @@
 import PageTitle from "@/components/PageTitle";
-import TaskPage from "@/components/tasks/TaskPage";
+import TaskPage from "@/components/taskpage/TaskPage";
 import useGetAllTasks from "@/pages/AllTasks/useGetAllTasks";
 
 const AllTasks = () => {

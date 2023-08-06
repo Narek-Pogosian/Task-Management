@@ -1,4 +1,4 @@
-import TaskPage from "@/components/tasks/TaskPage";
+import TaskPage from "@/components/taskpage/TaskPage";
 import useGetUpcoming from "./useGetUpcoming";
 import PageTitle from "@/components/PageTitle";
 

@@ -5,6 +5,7 @@ import useFilterTasks from "@/hooks/useFilterTasks";
 import TagSelect from "../tags/TagSelect";
 import { Input } from "../ui/input";
 import { TaskWithProject } from "@/lib/types/types";
+import StatusSelect from "./StatusSelect";
 
 type Props = {
   tasks: TaskWithProject[] | undefined;
@@ -13,23 +14,31 @@ type Props = {
 };
 
 const TaskPage = ({ tasks, isError, isLoading }: Props) => {
-  const { filteredTasks, setSearchQuery, searchTags, setSearchTags } =
-    useFilterTasks(convertTaskList(tasks ?? []));
+  const {
+    filteredTasks,
+    setSearchQuery,
+    searchTags,
+    setSearchTags,
+    setStatus,
+  } = useFilterTasks(convertTaskList(tasks ?? []));
 
   return (
     <>
       <h2 className="mt-6 mb-1 font-semibold">Filters</h2>
-      <div className="flex flex-col max-w-xl gap-4 mb-8 xs:flex-row">
-        <Input
-          type="text"
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search by title"
-        />
-        <TagSelect
-          selectedTags={searchTags}
-          setSelectedTags={setSearchTags}
-          placeholder="Search by tag"
-        />
+      <div className="max-w-xl mb-8">
+        <div className="flex flex-col gap-4 mb-4 xs:flex-row">
+          <Input
+            type="text"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search by title"
+          />
+          <TagSelect
+            selectedTags={searchTags}
+            setSelectedTags={setSearchTags}
+            placeholder="Search by tag"
+          />
+        </div>
+        <StatusSelect setStaus={setStatus} />
       </div>
 
       {isLoading ? (

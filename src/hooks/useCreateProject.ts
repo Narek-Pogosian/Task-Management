@@ -32,7 +32,7 @@ export default function useCreateProject() {
       });
 
       toast({
-        title: "Project created succesfully",
+        title: "New project created.",
       });
     },
     onError: () => {

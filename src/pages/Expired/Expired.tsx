@@ -1,4 +1,4 @@
-import TaskPage from "@/components/tasks/TaskPage";
+import TaskPage from "@/components/taskpage/TaskPage";
 import useGetExpired from "./useGetExpired";
 import PageTitle from "@/components/PageTitle";
 

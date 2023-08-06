@@ -30,7 +30,7 @@ const TaskCard = ({ task }: Props) => {
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1 md:gap-2">
           <EditTaskDialog task={task} />
           <DeleteTaskDialog task={task} />
         </div>

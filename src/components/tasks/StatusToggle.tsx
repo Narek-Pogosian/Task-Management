@@ -1,6 +1,6 @@
 import useToggleStatus from "@/hooks/useToggleStatus";
 import { ConvertedTask } from "@/lib/types/types";
-import { CheckCircle2, Circle, Loader } from "lucide-react";
+import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 
 type Props = {
   task: ConvertedTask;
@@ -10,16 +10,24 @@ const StatusToggle = ({ task }: Props) => {
   const { mutateAsync: toggleStatus, isLoading } = useToggleStatus();
 
   if (isLoading) {
-    return <Loader className="w-6 h-6 animate-spin" />;
+    return (
+      <div className="pt-1">
+        <Loader2 className="w-6 h-6 animate-spin" />
+      </div>
+    );
   }
 
   return (
     <button
-      className="h-fit"
+      className="pt-1 h-fit"
       onClick={() =>
         toggleStatus({ taskId: task.id, newStatus: !task.isCompleted })
       }
+      aria-label={
+        task.isCompleted ? "Task is completed" : "Task is not completed"
+      }
     >
+      <span className="sr-only">Toggle task status</span>
       {task.isCompleted ? (
         <CheckCircle2
           className="w-6 h-6 dark:text-emerald-400 text-emerald-600"

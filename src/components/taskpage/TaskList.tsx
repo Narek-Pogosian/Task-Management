@@ -1,5 +1,5 @@
 import { ConvertedTask } from "@/lib/types/types";
-import TaskCard from "./TaskCard";
+import TaskCard from "../tasks/TaskCard";
 import { ClipboardX } from "lucide-react";
 
 type Props = {

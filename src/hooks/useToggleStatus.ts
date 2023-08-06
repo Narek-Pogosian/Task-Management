@@ -45,7 +45,7 @@ export default function useToggleStatus() {
     onError: () => {
       toast({
         variant: "destructive",
-        title: "Something went wrong",
+        title: "Status could not be updated",
       });
     },
   });

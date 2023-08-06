@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useGetProjectTasks from "./useGetProjectTasks";
-import TaskPage from "@/components/tasks/TaskPage";
+import TaskPage from "@/components/taskpage/TaskPage";
 import CreateTaskDialog from "@/components/tasks/CreateTaskDialog";
 
 const Project = () => {
