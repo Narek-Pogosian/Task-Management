@@ -1,6 +1,6 @@
 import TaskPage from "@/components/taskpage/TaskPage";
 import useGetExpired from "./useGetExpired";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/taskpage/PageTitle";
 
 const Expired = () => {
   const { data, isError, isLoading } = useGetExpired();

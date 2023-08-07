@@ -1,6 +1,6 @@
 import TaskPage from "@/components/taskpage/TaskPage";
 import useGetUpcoming from "./useGetUpcoming";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/taskpage/PageTitle";
 
 const Upcoming = () => {
   const { data, isError, isLoading } = useGetUpcoming();

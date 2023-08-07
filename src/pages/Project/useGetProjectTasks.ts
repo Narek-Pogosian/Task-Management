@@ -2,14 +2,14 @@ import { db } from "@/lib/db";
 import { useQuery } from "@tanstack/react-query";
 
 const getProjectTasks = async (projectId: string) => {
-  const { data, error } = await db
+  const { data: tasks, error: taskError } = await db
     .from("Tasks")
     .select("*, Projects(*)")
     .eq("projectId", projectId);
 
-  if (error) throw error;
+  if (taskError) throw taskError;
 
-  return data;
+  return tasks;
 };
 
 export default function useGetProjectTasks(projectId: string) {

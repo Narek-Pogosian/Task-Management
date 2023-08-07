@@ -13,12 +13,12 @@ export default function useFilterTasks(tasks: ConvertedTask[]) {
     return tasks.filter((task) => {
       return (
         //  check if we have searchquery or searchtags to do comparison
-        (searchQuery === "" ||
+        (searchQuery.trim() === "" ||
           task.title.toLowerCase().includes(searchQuery.toLowerCase())) &&
         (searchTags.length === 0 ||
           searchTags.every(
             //  checks for every searchtag if the task contains all of them
-            (tag) => task.tags.some((taskTag) => taskTag.value === tag.value)
+            (tag) => task.tags.some((taskTag) => taskTag.label === tag.label)
             // returns true if the note contains the tag
           )) &&
         (status === "all" || task.isCompleted === JSON.parse(status))

@@ -16,7 +16,7 @@ const editTask = async ({
     throw new Error("Unauthorized");
   }
 
-  const { error, data } = await db
+  const { error } = await db
     .from("Tasks")
     .update({
       title,
@@ -25,15 +25,13 @@ const editTask = async ({
       projectId,
       tags: JSON.stringify(selectedTags),
     })
-    .eq("id", id)
-    .select()
-    .single();
+    .eq("id", id);
 
   if (error) {
     throw error;
   }
 
-  return data;
+  return true;
 };
 
 export default function useEditTask() {

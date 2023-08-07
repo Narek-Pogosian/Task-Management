@@ -42,11 +42,11 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
       </div>
 
       {isLoading ? (
-        <div className="flex justify-center pt-24">
+        <div className="flex justify-center pt-14">
           <Loader2 className="w-14 h-14 animate-spin" strokeWidth={3} />
         </div>
       ) : isError ? (
-        <div className="pt-24 text-4xl font-bold text-center text-rose-500">
+        <div className="text-4xl font-bold text-center pt-14 text-rose-500">
           Error
         </div>
       ) : (

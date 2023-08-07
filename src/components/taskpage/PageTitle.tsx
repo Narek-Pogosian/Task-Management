@@ -1,4 +1,4 @@
-import CreateTaskDialog from "./tasks/CreateTaskDialog";
+import CreateTaskDialog from "../tasks/CreateTaskDialog";
 
 type Props = {
   title: string;

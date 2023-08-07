@@ -1,4 +1,4 @@
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/taskpage/PageTitle";
 import TaskPage from "@/components/taskpage/TaskPage";
 import useGetAllTasks from "@/pages/AllTasks/useGetAllTasks";
 
