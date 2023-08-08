@@ -1,14 +1,11 @@
 import TaskList from "./TaskList";
-import { convertTaskList } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import useFilterTasks from "@/hooks/useFilterTasks";
-import TagSelect from "../tags/TagSelect";
-import { Input } from "../ui/input";
-import { TaskWithProject } from "@/lib/types/types";
-import StatusSelect from "./StatusSelect";
+import { ConvertedTask } from "@/lib/types/types";
+import Filters from "./Filters";
 
 type Props = {
-  tasks: TaskWithProject[] | undefined;
+  tasks: ConvertedTask[] | undefined;
   isLoading: boolean;
   isError: boolean;
 };
@@ -20,26 +17,16 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
     searchTags,
     setSearchTags,
     setStatus,
-  } = useFilterTasks(convertTaskList(tasks ?? []));
+  } = useFilterTasks(tasks ?? []);
 
   return (
     <>
-      {/* <h2 className="mt-4 mb-1 font-semibold">Filters</h2> */}
-      <div className="max-w-xl my-4">
-        <div className="flex flex-col gap-4 mb-4 xs:flex-row">
-          <Input
-            type="text"
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by title"
-          />
-          <TagSelect
-            selectedTags={searchTags}
-            setSelectedTags={setSearchTags}
-            placeholder="Search by tag"
-          />
-        </div>
-        <StatusSelect setStaus={setStatus} />
-      </div>
+      <Filters
+        searchTags={searchTags}
+        setSearchQuery={setSearchQuery}
+        setSearchTags={setSearchTags}
+        setStatus={setStatus}
+      />
 
       {isLoading ? (
         <div className="flex justify-center pt-14">
