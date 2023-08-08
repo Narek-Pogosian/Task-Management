@@ -1,3 +1,4 @@
+import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
 import { TaskWithProject } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
@@ -16,7 +17,7 @@ const getTodayTasks = async () => {
 
 export default function useGetToday() {
   return useQuery<TaskWithProject[], PostgrestError>(
-    ["tasks", "today"],
+    ["tasks", taskKeys.today],
     getTodayTasks
   );
 }

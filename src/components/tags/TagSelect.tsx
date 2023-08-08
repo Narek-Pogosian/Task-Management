@@ -21,7 +21,6 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           ...styles,
           borderWidth: "1px",
           backgroundColor: "transparent",
-          // backgroundColor: isDarkMode ? "#020817" : "white",
           fontSize: "14px",
           borderColor: isFocused
             ? "#6366f1"

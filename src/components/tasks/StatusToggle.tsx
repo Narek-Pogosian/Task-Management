@@ -10,16 +10,12 @@ const StatusToggle = ({ task }: Props) => {
   const { mutateAsync: toggleStatus, isLoading } = useToggleStatus();
 
   if (isLoading) {
-    return (
-      <div className="pt-1">
-        <Loader2 className="w-6 h-6 animate-spin" />
-      </div>
-    );
+    return <Loader2 className="w-6 h-6 animate-spin" />;
   }
 
   return (
     <button
-      className="pt-1 h-fit"
+      className="h-fit"
       onClick={() =>
         toggleStatus({ taskId: task.id, newStatus: !task.isCompleted })
       }

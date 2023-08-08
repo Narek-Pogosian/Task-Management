@@ -1,3 +1,4 @@
+import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
 import { TaskWithProject } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
@@ -15,7 +16,7 @@ const getUpcoming = async () => {
 
 export default function useGetUpcoming() {
   return useQuery<TaskWithProject[], PostgrestError>(
-    ["tasks", "upcoming"],
+    ["tasks", taskKeys.upcoming],
     getUpcoming
   );
 }

@@ -1,3 +1,4 @@
+import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
 import { TaskWithProject } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
@@ -13,7 +14,7 @@ const getAllTasks = async () => {
 
 export default function useGetAllTasks() {
   return useQuery<TaskWithProject[], PostgrestError>(
-    ["tasks", "all"],
+    ["tasks", taskKeys.all],
     getAllTasks
   );
 }

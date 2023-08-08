@@ -1,4 +1,5 @@
 import { toast } from "@/components/ui/use-toast";
+import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
 import type { TaskFormData } from "@/lib/types/types";
 import { getQueryKey } from "@/lib/utils";
@@ -39,7 +40,7 @@ export default function useCreateTask() {
   const queryClient = useQueryClient();
   return useMutation(createTask, {
     onSuccess: (data) => {
-      queryClient.invalidateQueries(["tasks", "all"]);
+      queryClient.invalidateQueries(["tasks", taskKeys.all]);
 
       if (data.expires_at) {
         const key = getQueryKey(data.expires_at);

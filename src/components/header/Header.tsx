@@ -9,7 +9,7 @@ const Header = () => {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
-    <header className="fixed inset-0 flex items-center justify-between px-2 border-b md:px-8 h-14">
+    <header className="fixed inset-0 flex items-center justify-between px-4 border-b md:px-8 h-14">
       <Link
         to="/"
         className="text-xl font-bold"

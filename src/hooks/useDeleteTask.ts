@@ -1,4 +1,5 @@
 import { toast } from "@/components/ui/use-toast";
+import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
 import { Task } from "@/lib/types/types";
 import { getQueryKey } from "@/lib/utils";
@@ -24,7 +25,7 @@ export default function useDeleteTask() {
 
   return useMutation(deleteTask, {
     onSuccess: (data) => {
-      queryClient.setQueryData(["tasks", "all"], (oldData?: Task[]) => {
+      queryClient.setQueryData(["tasks", taskKeys.all], (oldData?: Task[]) => {
         return oldData?.filter((task) => task.id !== data.id);
       });
 

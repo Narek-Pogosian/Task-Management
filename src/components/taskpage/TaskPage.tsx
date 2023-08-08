@@ -24,8 +24,8 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
 
   return (
     <>
-      <h2 className="mt-6 mb-1 font-semibold">Filters</h2>
-      <div className="max-w-xl mb-8">
+      {/* <h2 className="mt-4 mb-1 font-semibold">Filters</h2> */}
+      <div className="max-w-xl my-4">
         <div className="flex flex-col gap-4 mb-4 xs:flex-row">
           <Input
             type="text"

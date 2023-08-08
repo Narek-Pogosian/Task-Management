@@ -34,9 +34,12 @@ const DeleteTaskDialog = ({ task }: Props) => {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="icon">
-          <span className="sr-only">Delete Task</span>
-          <Trash className="w-4 h-4" />
+        <Button
+          variant="dropdown"
+          size="dropdown"
+          className="hover:text-destructive"
+        >
+          <Trash className="w-4 h-4 mr-2" /> Delete
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

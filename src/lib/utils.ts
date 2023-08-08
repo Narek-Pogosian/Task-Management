@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { ConvertedTask, Task } from "./types/types";
+import { TasksKeyType } from "./data/queryKeys";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -16,13 +17,9 @@ export const convertTaskList = (tasks: Task[]): ConvertedTask[] => {
   return convertedTasks;
 };
 
-export const getQueryKey = (date: string) => {
+export const getQueryKey = (date: string): TasksKeyType => {
   // ! WARNING: Timezones dont match
   const currentDate = new Date().toISOString().split("T")[0]!;
-
-  if (date == currentDate) {
-    return "today";
-  }
 
   if (date < currentDate) {
     return "expired";
@@ -31,4 +28,6 @@ export const getQueryKey = (date: string) => {
   if (date > currentDate) {
     return "upcoming";
   }
+
+  return "today";
 };
