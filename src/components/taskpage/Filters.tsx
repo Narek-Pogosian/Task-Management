@@ -18,7 +18,7 @@ const Filters = ({
   setStatus,
 }: Props) => {
   return (
-    <div className="flex flex-col max-w-3xl gap-4 my-8 sm:flex-row-reverse">
+    <div className="flex flex-col max-w-3xl gap-4 mt-6 mb-8 sm:flex-row-reverse">
       <TagSelect
         selectedTags={searchTags}
         setSelectedTags={setSearchTags}

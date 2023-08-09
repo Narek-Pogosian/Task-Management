@@ -1,8 +1,8 @@
 import TaskList from "./TaskList";
-import { Loader2 } from "lucide-react";
 import useFilterTasks from "@/hooks/useFilterTasks";
 import { ConvertedTask } from "@/lib/types/types";
 import Filters from "./Filters";
+import SkeletonTask from "../tasks/SkeletonTask";
 
 type Props = {
   tasks: ConvertedTask[] | undefined;
@@ -29,12 +29,16 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
       />
 
       {isLoading ? (
-        <div className="flex justify-center pt-14">
-          <Loader2 className="w-14 h-14 animate-spin" strokeWidth={3} />
+        <div className="@container">
+          <div className="grid gap-6 @4xl:grid-cols-2">
+            {new Array(6).fill(0).map((_, i) => (
+              <SkeletonTask key={i} />
+            ))}
+          </div>
         </div>
       ) : isError ? (
-        <div className="text-4xl font-bold text-center pt-14 text-rose-500">
-          Error
+        <div className="text-4xl font-bold text-center pt-14">
+          Something went wrong.
         </div>
       ) : (
         <TaskList tasks={filteredTasks} />
