@@ -1,11 +1,11 @@
 import TaskList from "./TaskList";
 import useFilterTasks from "@/hooks/useFilterTasks";
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import Filters from "./Filters";
 import SkeletonTask from "../tasks/SkeletonTask";
 
 type Props = {
-  tasks: ConvertedTask[] | undefined;
+  tasks: Task[] | undefined;
   isLoading: boolean;
   isError: boolean;
 };

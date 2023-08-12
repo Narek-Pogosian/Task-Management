@@ -6,12 +6,12 @@ import {
 
 import { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import EditTaskDialog from "./EditTaskDialog";
 import DeleteTaskDialog from "./DeleteTaskDialog";
 
 type Props = {
-  task: ConvertedTask;
+  task: Task;
 };
 
 const TaskMenu = ({ task }: Props) => {
@@ -20,7 +20,7 @@ const TaskMenu = ({ task }: Props) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button>
+        <button className="h-fit">
           <MoreHorizontal className="w-6 h-6" />
         </button>
       </PopoverTrigger>

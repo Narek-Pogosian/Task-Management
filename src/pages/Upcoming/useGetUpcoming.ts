@@ -1,6 +1,6 @@
 import { taskKeys } from "@/lib/data/queryKeys";
 import { db } from "@/lib/db";
-import { TaskWithProject } from "@/lib/types/types";
+import { DbTask } from "@/lib/types/types";
 import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
@@ -15,7 +15,7 @@ const getUpcoming = async () => {
 };
 
 export default function useGetUpcoming() {
-  return useQuery<TaskWithProject[], PostgrestError>(
+  return useQuery<DbTask[], PostgrestError>(
     ["tasks", taskKeys.upcoming],
     getUpcoming
   );

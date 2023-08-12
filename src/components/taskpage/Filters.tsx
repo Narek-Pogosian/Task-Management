@@ -18,18 +18,18 @@ const Filters = ({
   setStatus,
 }: Props) => {
   return (
-    <div className="flex flex-col max-w-3xl gap-4 mt-6 mb-8 sm:flex-row-reverse">
-      <TagSelect
-        selectedTags={searchTags}
-        setSelectedTags={setSearchTags}
-        placeholder="Filter by tag"
-      />
+    <div className="flex flex-col max-w-3xl gap-4 mt-6 mb-8 sm:flex-row">
+      <StatusSelect setStaus={setStatus} />
       <Input
         type="text"
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Filter by title"
       />
-      <StatusSelect setStaus={setStatus} />
+      <TagSelect
+        selectedTags={searchTags}
+        setSelectedTags={setSearchTags}
+        placeholder="Filter by tag"
+      />
     </div>
   );
 };

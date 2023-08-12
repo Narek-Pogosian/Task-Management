@@ -1,8 +1,8 @@
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import TaskCard from "../tasks/TaskCard";
 
 type Props = {
-  tasks: ConvertedTask[];
+  tasks: Task[];
 };
 
 const TaskList = ({ tasks }: Props) => {

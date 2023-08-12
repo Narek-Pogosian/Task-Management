@@ -1,6 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
-import { ConvertedTask, Project } from "@/lib/types/types";
+import { Project, DbTask } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const updateProject = async ({
@@ -34,7 +34,7 @@ export default function useEditProject() {
         );
       });
 
-      queryClient.setQueriesData(["tasks"], (oldData?: ConvertedTask[]) => {
+      queryClient.setQueriesData(["tasks"], (oldData?: DbTask[]) => {
         return oldData?.map((task) =>
           task.Projects?.id === newProject.id
             ? { ...task, Projects: newProject }

@@ -10,8 +10,8 @@ type Props = {
 const ProjectLink = ({ project, active }: Props) => {
   return (
     <div
-      className={`flex items-center pr-2 justify-between gap-2 group rounded hover:bg-border/60 ${
-        active ? "bg-border/60" : ""
+      className={`flex items-center pr-2 justify-between gap-2 group rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+        active ? "bg-black/5 dark:bg-white/10" : ""
       }`}
     >
       <Link

@@ -23,7 +23,7 @@ const AppLayout = () => {
       <Header />
       <div className="flex h-screen pt-14">
         {isDesktop && <Sidebar />}
-        <div className="flex-1 px-4 py-4 overflow-y-auto md:px-8 xl:px-20">
+        <div className="flex-1 px-4 py-6 overflow-y-auto md:px-8 xl:px-20">
           <div>
             <Outlet />
           </div>

@@ -13,10 +13,10 @@ import LoadingButton from "../ui/loading-button";
 import { Trash } from "lucide-react";
 import { Button } from "../ui/button";
 import useDeleteTask from "@/hooks/useDeleteTask";
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 
 type Props = {
-  task: ConvertedTask;
+  task: Task;
 };
 
 const DeleteTaskDialog = ({ task }: Props) => {

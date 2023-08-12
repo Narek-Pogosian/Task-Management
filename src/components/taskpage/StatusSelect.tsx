@@ -10,7 +10,7 @@ import { Status } from "@/hooks/useFilterTasks";
 
 const StatusSelect = ({ setStaus }: { setStaus: (val: Status) => void }) => {
   return (
-    <Select onValueChange={setStaus}>
+    <Select onValueChange={setStaus} defaultValue="all">
       <SelectTrigger className="w-auto min-w-[150px]">
         <SelectValue placeholder="Show all" />
       </SelectTrigger>

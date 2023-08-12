@@ -1,9 +1,9 @@
 import useToggleStatus from "@/hooks/useToggleStatus";
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 
 type Props = {
-  task: ConvertedTask;
+  task: Task;
 };
 
 const StatusToggle = ({ task }: Props) => {

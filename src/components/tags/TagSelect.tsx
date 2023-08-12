@@ -25,7 +25,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           borderColor: isFocused
             ? "#6366f1"
             : isDarkMode
-            ? "#1e293b"
+            ? "#353d4b"
             : "#e2e8f0",
 
           "&:hover": {
@@ -41,7 +41,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
         }),
         menu: (baseStyles) => ({
           ...baseStyles,
-          backgroundColor: isDarkMode ? "#020817" : "white",
+          backgroundColor: isDarkMode ? "#18181b" : "white",
           borderWidth: "1px",
           fontSize: "14px",
           padding: "4px",

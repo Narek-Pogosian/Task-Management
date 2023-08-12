@@ -13,8 +13,8 @@ const PageLinks = () => {
       <NavLink
         to="/today"
         className={({ isActive }) =>
-          `p-2 flex gap-2 items-center rounded hover:bg-border/60 ${
-            isActive ? "bg-border/60" : ""
+          `p-2 flex gap-2 items-center rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+            isActive ? "bg-black/5 dark:bg-white/10" : ""
           }`
         }
       >
@@ -23,8 +23,8 @@ const PageLinks = () => {
       <NavLink
         to="/upcoming"
         className={({ isActive }) =>
-          `p-2 flex gap-2 items-center rounded hover:bg-border/60 ${
-            isActive ? "bg-border/60" : ""
+          `p-2 flex gap-2 items-center rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+            isActive ? "bg-black/5 dark:bg-white/10" : ""
           }`
         }
       >
@@ -33,8 +33,8 @@ const PageLinks = () => {
       <NavLink
         to="/expired"
         className={({ isActive }) =>
-          `p-2 flex gap-2 items-center rounded hover:bg-border/60 ${
-            isActive ? "bg-border/60" : ""
+          `p-2 flex gap-2 items-center rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+            isActive ? "bg-black/5 dark:bg-white/10" : ""
           }`
         }
       >
@@ -43,8 +43,8 @@ const PageLinks = () => {
       <NavLink
         to="/all"
         className={({ isActive }) =>
-          `p-2 flex gap-2 items-center rounded hover:bg-border/60 ${
-            isActive ? "bg-border/60" : ""
+          `p-2 flex gap-2 items-center rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+            isActive ? "bg-black/5 dark:bg-white/10" : ""
           }`
         }
       >
@@ -53,8 +53,8 @@ const PageLinks = () => {
       <NavLink
         to="/tags"
         className={({ isActive }) =>
-          `p-2 flex gap-2 items-center rounded hover:bg-border/60 ${
-            isActive ? "bg-border/60" : ""
+          `p-2 flex gap-2 items-center rounded hover:bg-black/5 hover:dark:bg-white/10 ${
+            isActive ? "bg-black/5 dark:bg-white/10" : ""
           }`
         }
       >

@@ -1,6 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
-import { Project, Task } from "@/lib/types/types";
+import { DbTask, Project } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -30,7 +30,7 @@ export default function useDeleteProject(projectId: string) {
         return oldData?.filter((project) => project.id !== id);
       });
 
-      queryClient.setQueriesData(["tasks"], (oldData?: Task[]) => {
+      queryClient.setQueriesData(["tasks"], (oldData?: DbTask[]) => {
         return oldData?.filter((task) => task.projectId !== id);
       });
 

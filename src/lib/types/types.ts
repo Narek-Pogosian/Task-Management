@@ -2,12 +2,12 @@ import { Tag } from "../store/persistStore";
 import { Database } from "./db.types";
 
 export type Project = Database["public"]["Tables"]["Projects"]["Row"];
-export type Task = Database["public"]["Tables"]["Tasks"]["Row"];
+export type ITask = Database["public"]["Tables"]["Tasks"]["Row"];
 
-export interface TaskWithProject extends Task {
+export interface DbTask extends ITask {
   Projects?: Project | null;
 }
-export interface ConvertedTask extends Omit<TaskWithProject, "tags"> {
+export interface Task extends Omit<DbTask, "tags"> {
   tags: Tag[];
 }
 

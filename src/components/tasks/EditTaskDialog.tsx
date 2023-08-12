@@ -10,11 +10,11 @@ import { Pencil } from "lucide-react";
 import { FormEvent, useState } from "react";
 import TaskForm from "../forms/TaskForm";
 import LoadingButton from "../ui/loading-button";
-import { ConvertedTask, TaskFormData } from "@/lib/types/types";
+import { Task, TaskFormData } from "@/lib/types/types";
 import useEditTask from "@/hooks/useEditTask";
 
 type Props = {
-  task: ConvertedTask;
+  task: Task;
 };
 
 const EditTaskDialog = ({ task }: Props) => {

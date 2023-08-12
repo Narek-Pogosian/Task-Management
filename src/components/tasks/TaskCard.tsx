@@ -1,11 +1,11 @@
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import TagChip from "../tags/TagChip";
 import StatusToggle from "./StatusToggle";
 import TaskMenu from "./TaskMenu";
 import { Link } from "react-router-dom";
 
 type Props = {
-  task: ConvertedTask;
+  task: Task;
 };
 
 const TaskCard = ({ task }: Props) => {
@@ -13,7 +13,7 @@ const TaskCard = ({ task }: Props) => {
     <div className="flex gap-3 p-4 border rounded-lg shadow-sm bg-card text-card-foreground">
       <StatusToggle task={task} />
       <div className="flex flex-col flex-1">
-        <div className="flex justify-between gap-2 mb-1">
+        <div className="flex justify-between gap-4 mb-1">
           <h3 className="font-semibold">{task.title}</h3>
           <TaskMenu task={task} />
         </div>
@@ -21,7 +21,7 @@ const TaskCard = ({ task }: Props) => {
           {task.Projects && (
             <Link
               to={`/project/${task.projectId}`}
-              className="text-xs font-semibold hover:underline underline-offset-2"
+              className="text-xs font-semibold hover:underline underline-offset-2 w-fit"
             >
               {task.Projects?.name}
             </Link>

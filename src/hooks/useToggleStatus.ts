@@ -1,6 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/lib/db";
-import { ConvertedTask } from "@/lib/types/types";
+import { Task } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const toggleStatus = async ({
@@ -36,7 +36,7 @@ export default function useToggleStatus() {
   const queryClient = useQueryClient();
   return useMutation(toggleStatus, {
     onSuccess: ({ id, isCompleted }) => {
-      queryClient.setQueriesData(["tasks"], (oldData?: ConvertedTask[]) => {
+      queryClient.setQueriesData(["tasks"], (oldData?: Task[]) => {
         return oldData?.map((task) =>
           task.id === id ? { ...task, isCompleted } : task
         );
