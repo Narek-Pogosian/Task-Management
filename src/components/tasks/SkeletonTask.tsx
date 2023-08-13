@@ -9,12 +9,11 @@ const SkeletonTask = () => {
           <Skeleton className="w-full h-5" />
           {/* <TaskMenu task={task} /> */}
         </div>
-        <div className="flex flex-col flex-1 gap-1">
+        <div className="flex flex-col flex-1 gap-2">
           <Skeleton className="w-40 h-3" />
           <Skeleton className="w-40 h-3" />
         </div>
-        <div className="flex flex-wrap gap-2 mt-5">
-          <Skeleton className="w-16 h-4 rounded" />
+        <div className="flex flex-wrap gap-2 mt-7">
           <Skeleton className="w-16 h-4 rounded" />
           <Skeleton className="w-16 h-4 rounded" />
         </div>

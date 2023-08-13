@@ -36,6 +36,7 @@ const TaskForm = ({ children, initialData, submitFn }: Props) => {
 
       <div className="grid @md:grid-cols-4 gap-4">
         <div className="@md:col-span-3">
+          {/* // ! Causes tabbing not to work in dialog */}
           <TagSelect
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
