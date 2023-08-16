@@ -20,6 +20,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
         control: (styles, { isFocused }) => ({
           ...styles,
           borderWidth: "1px",
+          height: "40px",
           backgroundColor: "transparent",
           fontSize: "14px",
           borderColor: isDarkMode ? "#2a313c" : "#e2e8f0",
@@ -29,7 +30,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           },
 
           boxShadow: isFocused
-            ? `0 0 0 2px ${isDarkMode ? "#a0a0ac" : "#94a3b8"}`
+            ? `0 0 0 1px ${isDarkMode ? "#d4d4d4" : "#0a0a0a"}`
             : "",
         }),
         placeholder: (styles) => ({

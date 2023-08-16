@@ -5,6 +5,8 @@ import DatePicker from "../ui/date-picker";
 import { Input } from "../ui/input";
 import TagSelect from "../tags/TagSelect";
 import type { TaskFormData } from "@/lib/types/types";
+import { Label } from "../ui/label";
+import Optional from "./Optional";
 
 type Props = {
   children: ReactNode;
@@ -22,20 +24,29 @@ const TaskForm = ({ children, initialData, submitFn }: Props) => {
 
   return (
     <form
-      className="grid gap-4 @container"
+      className="grid gap-x-3 gap-y-6 @container"
       onSubmit={(e) =>
         submitFn(e, { title, projectId, expiresAt, selectedTags })
       }
     >
-      <Input
-        id="title"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+      <div>
+        <Label htmlFor="title">
+          Title{" "}
+          <span className="ml-2 text-xs text-muted-foreground">Required</span>
+        </Label>
+        <Input
+          id="title"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
 
       <div className="grid @md:grid-cols-4 gap-4">
         <div className="@md:col-span-3">
+          <Label htmlFor="tags">
+            Tags <Optional />
+          </Label>
           {/* // ! Causes tabbing not to work in dialog */}
           <TagSelect
             selectedTags={selectedTags}
@@ -43,12 +54,26 @@ const TaskForm = ({ children, initialData, submitFn }: Props) => {
             placeholder="Select tags"
           />
         </div>
-        <CreateTagDialog full />
+        <div className="flex items-end">
+          <CreateTagDialog full />
+        </div>
       </div>
 
       <div className="grid gap-4 @md:grid-cols-2">
-        <DatePicker date={expiresAt} setDate={setExpiresAt} />
-        <ProjectSelect setProject={setProjectId} projectId={projectId} />
+        <div>
+          <Label>
+            Expiration date <Optional />
+          </Label>
+          <DatePicker date={expiresAt} setDate={setExpiresAt} />
+        </div>
+
+        <div>
+          <Label htmlFor="project">
+            Project
+            <Optional />
+          </Label>
+          <ProjectSelect setProject={setProjectId} projectId={projectId} />
+        </div>
       </div>
 
       <div className="flex justify-end gap-4">

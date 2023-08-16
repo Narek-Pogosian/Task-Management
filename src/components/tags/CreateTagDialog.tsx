@@ -15,7 +15,10 @@ const CreateTagDialog = ({ full }: { full?: boolean }) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className={full ? "w-full" : "w-fit"}>
+        <Button
+          variant="outline"
+          className={`h-10 ${full ? "w-full" : "w-fit"}`}
+        >
           Create Tag
         </Button>
       </DialogTrigger>

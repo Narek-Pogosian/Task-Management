@@ -17,12 +17,12 @@ function DatePicker({ date, setDate }: Props) {
         <Button
           variant="outline"
           className={cn(
-            "justify-start h-full text-left w-full font-normal hover:bg-transparent",
+            "justify-start h-10 text-left w-full font-normal hover:bg-transparent",
             !date && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="w-4 h-4 mr-2" />
-          {date ? format(date, "PPP") : <span>Due date (optional)</span>}
+          {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
 

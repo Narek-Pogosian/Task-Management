@@ -5,7 +5,7 @@ import ProjectList from "./ProjectList";
 
 const Sidebar = () => {
   return (
-    <aside className="w-56 pt-6 pl-6 pr-2 overflow-y-auto text-sm font-semibold lg:border-r">
+    <aside className="w-56 p-4 overflow-y-auto text-sm font-semibold lg:border-r">
       <PageLinks />
       <div className="px-2 pt-4">
         <div className="flex items-center justify-between mb-2">

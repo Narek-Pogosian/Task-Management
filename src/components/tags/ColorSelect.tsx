@@ -28,7 +28,7 @@ const ColorSelect = ({ setColor, color }: Props) => {
             <SelectItem
               value={color.value}
               key={color.id}
-              style={{ backgroundColor: `rgb(${color.value})` }}
+              style={{ color: `rgb(${color.value})` }}
               className="font-bold cursor-pointer"
             >
               {color.label}

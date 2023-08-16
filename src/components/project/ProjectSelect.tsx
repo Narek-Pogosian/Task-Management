@@ -21,11 +21,8 @@ const ProjectSelect = ({ setProject, projectId }: Props) => {
       onValueChange={setProject}
       value={projectId ? projectId : undefined}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue
-          placeholder="Project (optional)"
-          className="text-red-400"
-        />
+      <SelectTrigger className="w-full" id="project">
+        <SelectValue placeholder="Select a project" className="text-red-400" />
       </SelectTrigger>
       <SelectContent className="overflow-y-auto max-h-60">
         <SelectGroup>
