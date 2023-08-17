@@ -43,7 +43,7 @@ const EditTaskDialog = ({ task }: Props) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-4">Create a new task.</DialogTitle>
+          <DialogTitle className="mb-4">Edit task.</DialogTitle>
           <TaskForm
             submitFn={handleSubmit}
             initialData={{
