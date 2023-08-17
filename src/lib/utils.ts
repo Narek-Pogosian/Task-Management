@@ -18,12 +18,9 @@ export const convertTaskList = (tasks: DbTask[]): Task[] => {
 };
 
 export const getQueryKey = (date: string): TasksKeyType => {
-  // ! WARNING: Timezones dont match
-  const currentDate = new Date();
-  const expiresAt = new Date(date);
-
-  console.log("current: ", currentDate);
-  console.log("expires: ", expiresAt);
+  // ? Hopefully timezones match
+  const currentDate = new Date().toLocaleDateString();
+  const expiresAt = new Date(date).toLocaleDateString();
 
   if (expiresAt < currentDate) {
     return "expired";

@@ -8,8 +8,17 @@ import AllTasks from "./pages/AllTasks/AllTasks";
 import Today from "./pages/Today/Today";
 import Expired from "./pages/Expired/Expired";
 import Upcoming from "./pages/Upcoming/Upcoming";
+import { usePersistStore } from "./lib/store/persistStore";
 
 const App = () => {
+  const { isDarkMode } = usePersistStore();
+
+  if (isDarkMode) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
   return (
     <Routes>
       <Route path="/signin" element={<Login />} />
