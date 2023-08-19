@@ -3,6 +3,7 @@ import useFilterTasks from "@/hooks/useFilterTasks";
 import { Task } from "@/lib/types/types";
 import Filters from "./Filters";
 import SkeletonTask from "../tasks/SkeletonTask";
+import TaskGrid from "./TaskGrid";
 
 type Props = {
   tasks: Task[] | undefined;
@@ -29,13 +30,11 @@ const TaskPage = ({ tasks, isError, isLoading }: Props) => {
       />
 
       {isLoading ? (
-        <div className="@container">
-          <div className="grid gap-6 @4xl:grid-cols-2">
-            {new Array(6).fill(0).map((_, i) => (
-              <SkeletonTask key={i} />
-            ))}
-          </div>
-        </div>
+        <TaskGrid>
+          {new Array(6).fill(0).map((_, i) => (
+            <SkeletonTask key={i} />
+          ))}
+        </TaskGrid>
       ) : isError ? (
         <div className="text-4xl font-bold text-center pt-14">
           Something went wrong.

@@ -3,6 +3,7 @@ import { Tag } from "@/lib/store/persistStore";
 import { Input } from "../ui/input";
 import TagSelect from "../tags/TagSelect";
 import StatusSelect from "./StatusSelect";
+import { Label } from "../ui/label";
 
 type Props = {
   setSearchQuery: (q: string) => void;
@@ -19,17 +20,27 @@ const Filters = ({
 }: Props) => {
   return (
     <div className="flex flex-col max-w-3xl gap-4 mt-6 mb-8 sm:flex-row">
-      <StatusSelect setStaus={setStatus} />
-      <Input
-        type="text"
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Filter by title"
-      />
-      <TagSelect
-        selectedTags={searchTags}
-        setSelectedTags={setSearchTags}
-        placeholder="Filter by tag"
-      />
+      <div>
+        <Label htmlFor="status">Status</Label>
+        <StatusSelect setStaus={setStatus} />
+      </div>
+      <div className="min-w-[230px] xl:w-[300px]">
+        <Label htmlFor="title">Title</Label>
+        <Input
+          type="text"
+          id="title"
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Filter by title"
+        />
+      </div>
+      <div className="min-w-[230px] xl:w-[300px]">
+        <Label htmlFor="tags">Tags</Label>
+        <TagSelect
+          selectedTags={searchTags}
+          setSelectedTags={setSearchTags}
+          placeholder="Filter by tag"
+        />
+      </div>
     </div>
   );
 };
