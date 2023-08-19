@@ -17,7 +17,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex min-h-full">
-      <div className="flex-1 hidden place-content-center lg:grid bg-[#141415] text-slate-50">
+      <div className="flex-1 hidden place-content-center lg:grid bg-[#131320] text-slate-50">
         <div className="max-w-md text-center">
           <h1 className="mb-6 text-6xl font-bold leading-[52px] text-balance">
             Task mastery made easy.

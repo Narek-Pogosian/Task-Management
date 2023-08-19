@@ -17,6 +17,10 @@ type Props = {
 const TaskMenu = ({ task }: Props) => {
   const [open, setOpen] = useState(false);
 
+  const closeDropdown = () => {
+    setOpen(false);
+  };
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -25,8 +29,8 @@ const TaskMenu = ({ task }: Props) => {
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-32 p-1">
-        <EditTaskDialog task={task} />
-        <DeleteTaskDialog task={task} />
+        <EditTaskDialog task={task} closeDropdown={closeDropdown} />
+        <DeleteTaskDialog task={task} closeDropdown={closeDropdown} />
       </PopoverContent>
     </Popover>
   );

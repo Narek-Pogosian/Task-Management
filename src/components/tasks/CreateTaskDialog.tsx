@@ -29,7 +29,7 @@ const CreateTaskDialog = () => {
   return (
     <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" variant="outline">
+        <Button size="sm">
           <span className="sr-only">Create Task</span>
           <Plus className="w-5 h-5 mr-2" /> Task
         </Button>

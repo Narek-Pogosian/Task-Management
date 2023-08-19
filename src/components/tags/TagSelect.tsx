@@ -23,23 +23,23 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           height: "40px",
           backgroundColor: "transparent",
           fontSize: "14px",
-          borderColor: isDarkMode ? "#2a313c" : "#e2e8f0",
+          borderColor: isDarkMode ? "#363659" : "#e2e8f0",
 
           "&:hover": {
             cursor: "text",
           },
 
           boxShadow: isFocused
-            ? `0 0 0 1px ${isDarkMode ? "#d4d4d4" : "#0a0a0a"}`
+            ? `0 0 0 1px ${isDarkMode ? "#9f9fc6" : "#0a0a0a"}`
             : "",
         }),
         placeholder: (styles) => ({
           ...styles,
-          color: isDarkMode ? "#94a3b8" : "#64748b",
+          color: isDarkMode ? "#a3a3c2" : "#64748b",
         }),
         menu: (baseStyles) => ({
           ...baseStyles,
-          backgroundColor: isDarkMode ? "#18181b" : "white",
+          backgroundColor: isDarkMode ? "#151523" : "white",
           borderWidth: "1px",
           fontSize: "14px",
           padding: "4px",
@@ -52,7 +52,7 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           ...styles,
           backgroundColor: isFocused
             ? isDarkMode
-              ? "#22252a"
+              ? "#24243d"
               : "#eaf0f6"
             : "transparent",
           color: `rgb(${data.color})`,

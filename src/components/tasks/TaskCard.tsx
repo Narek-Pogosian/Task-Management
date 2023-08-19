@@ -10,11 +10,11 @@ type Props = {
 
 const TaskCard = ({ task }: Props) => {
   return (
-    <div className="flex gap-3 p-4 border rounded-lg shadow-sm bg-card text-card-foreground">
+    <div className="flex gap-3 p-4 border rounded-lg shadow-sm border-input bg-card text-card-foreground">
       <StatusToggle task={task} />
       <div className="flex flex-col flex-1">
         <div className="flex justify-between gap-4 mb-1">
-          <h3 className="font-semibold">{task.title}</h3>
+          <h3 className="text-sm font-semibold">{task.title}</h3>
           <TaskMenu task={task} />
         </div>
         <div className="flex flex-col flex-1 gap-1">

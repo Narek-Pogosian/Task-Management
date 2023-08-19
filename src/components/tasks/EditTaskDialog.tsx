@@ -15,12 +15,17 @@ import useEditTask from "@/hooks/useEditTask";
 
 type Props = {
   task: Task;
+  closeDropdown: () => void;
 };
 
-const EditTaskDialog = ({ task }: Props) => {
+const EditTaskDialog = ({ task, closeDropdown }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { mutateAsync, isLoading } = useEditTask();
+
+  const closeDialog = () => {
+    setIsOpen(false);
+    closeDropdown();
+  };
 
   const handleSubmit = async (e: FormEvent, data: TaskFormData) => {
     e.preventDefault();
@@ -28,10 +33,20 @@ const EditTaskDialog = ({ task }: Props) => {
     if (!data.title.trim()) return;
     await mutateAsync({ ...data, id: task.id });
     setIsOpen(false);
+    closeDropdown();
   };
 
   return (
-    <Dialog onOpenChange={setIsOpen} open={isOpen}>
+    <Dialog
+      onOpenChange={(open) => {
+        if (!open) {
+          closeDialog();
+        } else {
+          setIsOpen(true);
+        }
+      }}
+      open={isOpen}
+    >
       <DialogTrigger asChild>
         <Button
           size="dropdown"
@@ -55,11 +70,7 @@ const EditTaskDialog = ({ task }: Props) => {
               title: task.title,
             }}
           >
-            <Button
-              variant="outline"
-              onClick={() => setIsOpen(false)}
-              type="button"
-            >
+            <Button variant="outline" onClick={closeDialog} type="button">
               Cancel
             </Button>
             <LoadingButton

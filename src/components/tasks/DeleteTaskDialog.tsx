@@ -17,9 +17,10 @@ import { Task } from "@/lib/types/types";
 
 type Props = {
   task: Task;
+  closeDropdown: () => void;
 };
 
-const DeleteTaskDialog = ({ task }: Props) => {
+const DeleteTaskDialog = ({ task, closeDropdown }: Props) => {
   const [open, setOpen] = useState(false);
   const { isLoading, mutateAsync: deleteProject } = useDeleteTask();
 
@@ -27,6 +28,7 @@ const DeleteTaskDialog = ({ task }: Props) => {
     await deleteProject(task.id, {
       onSuccess: () => {
         setOpen(false);
+        closeDropdown();
       },
     });
   };
@@ -50,7 +52,7 @@ const DeleteTaskDialog = ({ task }: Props) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel onClick={closeDropdown}>Cancel</AlertDialogCancel>
           <LoadingButton
             aria-label="Delete Project"
             variant="destructive"
