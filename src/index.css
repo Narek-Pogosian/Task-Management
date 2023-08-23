@@ -28,6 +28,8 @@
   }
 
   .dark {
+    color-scheme: dark;
+
     --background: 240 25% 10%;
     --foreground: 0 0% 98%;
     --card: 240 25% 14%;
