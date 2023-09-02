@@ -10,6 +10,8 @@ const editTask = async ({
   title,
   id,
 }: TaskFormData) => {
+  if (!id) throw Error("Missing task id");
+
   const { data: auth, error: authError } = await db.auth.getSession();
 
   if (authError || !auth.session) {
