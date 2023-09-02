@@ -1,7 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { db } from "@/lib/db";
 import { AuthError } from "@supabase/supabase-js";
-import { RegisterSchemaType } from "@/lib/validators/registerValidation";
+
+export type RegisterSchemaType = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 const register = async ({ email, password }: RegisterSchemaType) => {
   const { data, error } = await db.auth.signUp({
