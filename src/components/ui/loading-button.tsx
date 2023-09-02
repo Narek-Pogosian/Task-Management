@@ -1,10 +1,11 @@
 import { Loader } from "lucide-react";
 import { Button, ButtonProps } from "./button";
+import { ReactNode } from "react";
 
 type Props = {
   isLoading?: boolean;
   loadingText: string;
-  children: string;
+  children: ReactNode;
 } & ButtonProps;
 
 const LoadingButton = ({

@@ -19,7 +19,7 @@ const Filters = ({
   setStatus,
 }: Props) => {
   return (
-    <div className="flex flex-col max-w-3xl gap-4 mt-3 mb-5 sm:flex-row">
+    <div className="flex flex-col max-w-3xl gap-4 mb-6 sm:flex-row">
       <div>
         <Label htmlFor="status">Status</Label>
         <StatusSelect setStaus={setStatus} />

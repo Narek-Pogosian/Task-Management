@@ -16,7 +16,7 @@ const AppLayout = () => {
     };
 
     getLocalSession();
-  }, [navigate]);
+  }, []);
 
   return (
     <>

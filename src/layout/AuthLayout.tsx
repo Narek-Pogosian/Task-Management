@@ -13,30 +13,14 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     };
 
     getLocalSession();
-  }, [navigate]);
+  }, []);
 
   return (
-    <div className="flex min-h-full">
-      <div className="flex-1 hidden place-content-center lg:grid bg-[#131320] text-slate-50">
-        <div className="max-w-md text-center">
-          <h1 className="mb-6 text-6xl font-bold leading-[52px] text-balance">
-            Task mastery made easy.
-          </h1>
-          <p className="mb-12 text-lg text-balance text-slate-300">
-            An intuitive task management app that boosts productivity,
-            streamlines organization, and helps you achieve goals effortlessly.
-          </p>
-          <div className="flex justify-center">
-            <Logo size="lg" />
-          </div>
-        </div>
+    <div className="grid min-h-full place-content-center">
+      <div className="flex justify-center mb-8 ">
+        <Logo size="lg" />
       </div>
-      <div className="grid flex-1 place-content-center">
-        <div className="flex justify-center mb-8 ">
-          <Logo size="lg" />
-        </div>
-        {children}
-      </div>
+      {children}
     </div>
   );
 };

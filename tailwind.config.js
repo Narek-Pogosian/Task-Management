@@ -15,21 +15,15 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    fontFamily: {
-      sans: ["Open Sans", "sans-serif"],
-    },
     extend: {
-      screens: {
-        xs: "540px",
-      },
       colors: {
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
+          hover: "hsl(var(--primary-hover))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -56,6 +50,13 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        input: {
+          DEFAULT: "hsl(var(--input))",
+          bg: "hsl(var(--input-bg))",
+        },
+        scrollbar: {
+          DEFAULT: "hsl(var(--scrollbar))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,6 +81,7 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("tailwind-scrollbar"),
     require("@tailwindcss/container-queries"),
   ],
 };

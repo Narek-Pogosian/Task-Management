@@ -21,25 +21,25 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           ...styles,
           borderWidth: "1px",
           height: "40px",
-          backgroundColor: "transparent",
+          backgroundColor: isDarkMode ? "#1c1c21" : "#f7f7f8",
           fontSize: "14px",
-          borderColor: isDarkMode ? "#363659" : "#e2e8f0",
+          borderColor: isDarkMode ? "#333337" : "#e4e4e7",
 
           "&:hover": {
             cursor: "text",
           },
 
           boxShadow: isFocused
-            ? `0 0 0 1px ${isDarkMode ? "#9f9fc6" : "#0a0a0a"}`
+            ? `0 0 0 1px ${isDarkMode ? "white" : "#0a0a0a"}`
             : "",
         }),
         placeholder: (styles) => ({
           ...styles,
-          color: isDarkMode ? "#a3a3c2" : "#64748b",
+          color: isDarkMode ? "#a1a1aa" : "#64748b",
         }),
         menu: (baseStyles) => ({
           ...baseStyles,
-          backgroundColor: isDarkMode ? "#151523" : "white",
+          backgroundColor: isDarkMode ? "#1c1c21" : "white",
           borderWidth: "1px",
           fontSize: "14px",
           padding: "4px",
