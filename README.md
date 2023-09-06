@@ -1,3 +1,5 @@
+<base target="_blank">
+
 # Task Management
 Built with React and Shadcn on the frontend and uses Supabase for the backend.
 Uses react-query for server state to cache and invalidate or edit cache when needed.
