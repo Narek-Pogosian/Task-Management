@@ -3,7 +3,7 @@ Built with React and Shadcn on the frontend and uses Supabase for the backend.
 Uses react-query for server state to cache and invalidate or edit cache when needed.
 
 ## View
-<a target="_blank" href="https://task-management-zeta-three.vercel.app/">View here</a>
+<a href="https://task-management-zeta-three.vercel.app/" target="_blank" >View here</a>
 
 ## Includes
 1. Create and edit tasks and projects 
