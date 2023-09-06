@@ -6,6 +6,7 @@ Uses react-query for server state to cache and invalidate or edit cache when nee
 
 ## View
 <a href="https://task-management-zeta-three.vercel.app/" target="_blank" >View here</a>
+[New tab](https://task-management-zeta-three.vercel.app/)
 
 ## Includes
 1. Create and edit tasks and projects 
