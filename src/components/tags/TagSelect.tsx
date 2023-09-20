@@ -52,8 +52,8 @@ const TagSelect = ({ selectedTags, setSelectedTags, placeholder }: Props) => {
           ...styles,
           backgroundColor: isFocused
             ? isDarkMode
-              ? "#24243d"
-              : "#eaf0f6"
+              ? "#272730"
+              : "#efeff0"
             : "transparent",
           color: `rgb(${data.color})`,
           fontWeight: 700,
