@@ -1,8 +1,9 @@
 <base target="_blank">
 
 # Task Management
-Built with React and Shadcn on the frontend and Supabase for the backend.
-Plus react-query for server state.
+
+## Tech stack
+React, Supabase, Tailwind CSS with shadcn/ui, Tanstack-Query
 
 ## View Website
 <a href="https://task-management-zeta-three.vercel.app/" target="_blank" >View here</a>
