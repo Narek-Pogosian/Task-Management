@@ -5,7 +5,10 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
 const getAllTasks = async () => {
-  const { data, error } = await db.from("Tasks").select("*, Projects(*)");
+  const { data, error } = await db
+    .from("Tasks")
+    .select("*, Projects(*)")
+    .order("expires_at", { ascending: true });
 
   if (error) throw error;
 

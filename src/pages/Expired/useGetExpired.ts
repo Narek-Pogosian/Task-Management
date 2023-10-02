@@ -8,7 +8,8 @@ const getExpired = async () => {
   const { data, error } = await db
     .from("Tasks")
     .select("*, Projects(*)")
-    .lt("expires_at", new Date().toDateString());
+    .lt("expires_at", new Date().toDateString())
+    .order("expires_at", { ascending: true });
   if (error) throw error;
 
   return data;

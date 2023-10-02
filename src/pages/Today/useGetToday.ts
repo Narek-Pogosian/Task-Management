@@ -8,7 +8,8 @@ const getTodayTasks = async () => {
   const { data, error } = await db
     .from("Tasks")
     .select("*, Projects(*)")
-    .eq("expires_at", new Date().toDateString());
+    .eq("expires_at", new Date().toDateString())
+    .order("expires_at", { ascending: true });
 
   if (error) throw error;
 

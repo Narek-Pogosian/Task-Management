@@ -4,7 +4,10 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
 
 const getProjects = async () => {
-  const { data, error } = await db.from("Projects").select("*");
+  const { data, error } = await db
+    .from("Projects")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) throw error;
 

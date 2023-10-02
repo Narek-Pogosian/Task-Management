@@ -8,7 +8,8 @@ const getUpcoming = async () => {
   const { data, error } = await db
     .from("Tasks")
     .select("*, Projects(*)")
-    .gt("expires_at", new Date().toDateString());
+    .gt("expires_at", new Date().toDateString())
+    .order("expires_at", { ascending: true });
   if (error) throw error;
 
   return data;
