@@ -5,9 +5,6 @@
 ## Tech stack
 React, Supabase, Tailwind CSS with shadcn/ui, Tanstack-Query
 
-## View Website
-<a href="https://task-management-zeta-three.vercel.app/" target="_blank" >View here</a>
-
 ## Includes
 1. Create and edit tasks and projects 
 2. Organizing tasks in projects, adding tags, setting expiration dates
